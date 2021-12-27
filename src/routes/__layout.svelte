@@ -2,5 +2,7 @@
 	import Header from '$lib/Header.svelte';
 </script>
 
-<Header />
-<slot />
+<!-- <Header /> -->
+<Header>
+	<slot />
+</Header>
