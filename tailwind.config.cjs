@@ -2,7 +2,11 @@ const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				sans: ['Open Sans', 'sans-serif'],
+			},
+		}
 	},
 
 	plugins: [
@@ -17,8 +21,8 @@ const config = {
 		themes: {
 			storekit: {
 				// Using this palette: https://colorhunt.co/palette/000000f58840b85252eadede
-					// Primary
-					primary: '#000000',
+				// Primary
+				primary: '#000000',
 				'primary-focus': '#241f31',
 				'primary-content': '#ffffff',
 				// Secondary

@@ -1,11 +1,10 @@
 <script lang="ts">
-	let rtl = false;
-
-	const switchDirection = (): void => {
-		rtl = !rtl;
-		document.dir = rtl ? 'rtl' : 'ltr';
-	};
+	import '../app.css';
 </script>
+
+<svelte:head>
+	<title>Shop the latest fashion shoes from StoreKit</title>
+</svelte:head>
 
 <h1 class="title text-3xl font-bold">Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
