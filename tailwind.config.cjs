@@ -5,15 +5,20 @@ const config = {
 		extend: {}
 	},
 
-	plugins: [require('@tailwindcss/typography'), require('daisyui'), require('tailwindcss-flip')],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('daisyui'),
+		require('tailwindcss-flip'),
+		require('@tailwindcss/forms'),
+	],
 	// config (optional)
 	daisyui: {
 		styled: true,
 		themes: {
 			storekit: {
 				// Using this palette: https://colorhunt.co/palette/000000f58840b85252eadede
-				// Primary
-				primary: '#000000',
+					// Primary
+					primary: '#000000',
 				'primary-focus': '#241f31',
 				'primary-content': '#ffffff',
 				// Secondary
