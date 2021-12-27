@@ -10,7 +10,7 @@
 <h1 class="title text-3xl font-bold">Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <h2 class="ml-5 prose-h2 prose-2xl prose-strong">عنوان</h2>
-<p>
+<p class="truncate">
 	هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث
 	يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها
 	التطبيق.
