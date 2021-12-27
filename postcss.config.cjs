@@ -10,7 +10,7 @@ const config = {
 		tailwindcss(),
 		//But others, like autoprefixer, need to run after,
 		autoprefixer(),
-		production ? cssnano({ preset: 'default' }) : null
+		production && cssnano({ preset: 'default' })
 	]
 };
 
