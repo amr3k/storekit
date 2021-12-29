@@ -6,11 +6,34 @@
 	import Sidebar from './Sidebar/sidebar.svelte';
 	import type { Product } from '$lib/Types/Data/product';
 	import type { User } from '$lib/Types/Auth/user';
-	import HeaderMenus from '$lib/Types/UI/header';
+	import HeaderMenus, { Pages } from '$lib/Types/UI/header';
+	import PageList from './pageList.svelte';
 	export let user: User = {
 		userName: 'Amr',
 		isUserLoggedIn: true
 	};
+	const pages: Pages = [
+		{
+			title: 'Home',
+			url: '/'
+		},
+		{
+			title: 'Men',
+			url: '/category/men'
+		},
+		{
+			title: 'Women',
+			url: '/category/women'
+		},
+		{
+			title: 'Accessories',
+			url: '/category/accessories'
+		},
+		{
+			title: 'Outlet',
+			url: '/category/outlet'
+		}
+	];
 	let cart: Product[] = [
 		{
 			image:
@@ -65,14 +88,14 @@
 		headerMenus.language = false;
 		headerMenus.search = false;
 	};
-	const handleKeyDown = (event: KeyboardEvent) => {
+	const escapeClick = (event: KeyboardEvent) => {
 		if (event.key === 'Escape' || event.key === 'Esc') {
 			closeAllMenus();
 		}
 	};
 </script>
 
-<svelte:window on:keydown={handleKeyDown} />
+<svelte:window on:keydown={escapeClick} />
 
 <main class="shadow-lg bg-base-200 drawer">
 	<input id="main-drawer" type="checkbox" class="drawer-toggle" />
@@ -109,13 +132,7 @@
 				<a href="/"><img class="w-24" src="/logo/light-bg.svg" alt="Storekit logo" /></a>
 			</div>
 			<div class="hidden w-1/3 px-2 mx-2 lg:flex lg:flex-1 lg:justify-center">
-				<div class="flex items-stretch">
-					<a href="/" class="navbar-category">Home</a>
-					<a href="/category/men" class="navbar-category">Men</a>
-					<a href="/category/women" class="navbar-category">Women</a>
-					<a href="/category/accessories" class="navbar-category">Accessories</a>
-					<a href="/category/outlet" class="navbar-category">Outlet</a>
-				</div>
+				<PageList {pages} />
 			</div>
 			<div class="relative w-1/3 pr-2 flex justify-end">
 				<button class="hidden md:inline-block btn btn-square btn-ghost">
@@ -204,16 +221,10 @@
 		</div>
 		<slot />
 	</div>
-	<Sidebar on:closeSideBar={closeSideBar} />
+	<Sidebar {pages} on:closeSideBar={closeSideBar} />
 </main>
 
 <style lang="postcss">
-	.navbar-category {
-		@apply mx-3 my-1 font-medium leading-6 border-b border-b-transparent;
-	}
-	.navbar-category:hover {
-		@apply border-b border-b-primary duration-500;
-	}
 	main.drawer {
 		min-height: 100vh;
 	}

@@ -1,28 +1,9 @@
 <script lang="ts">
+	import type { Pages } from '$lib/Types/UI/header';
+
 	import { createEventDispatcher } from 'svelte';
 
-	const pages: { title: string; url: string }[] = [
-		{
-			title: 'Home',
-			url: '/'
-		},
-		{
-			title: 'Men',
-			url: '/category/men'
-		},
-		{
-			title: 'Women',
-			url: '/category/women'
-		},
-		{
-			title: 'Accessories',
-			url: '/category/accessories'
-		},
-		{
-			title: 'Outlet',
-			url: '/category/outlet'
-		}
-	];
+	export let pages: Pages;
 
 	const dispatch = createEventDispatcher();
 	const closeSideBar = (): void => {
