@@ -6,6 +6,16 @@ const config = {
 			fontFamily: {
 				sans: ['Open Sans', 'sans-serif'],
 			},
+			keyframes: {
+				"fly-1": {
+					from: {
+						transform: 'translateY(0.1em)'
+					},
+					to: {
+						transform: 'translateY(-0.1em)'
+					},
+				}
+			}
 		}
 	},
 
