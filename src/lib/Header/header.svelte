@@ -72,14 +72,6 @@
 		document.dir = ltr ? 'ltr' : 'rtl';
 		document.documentElement.setAttribute('lang', ltr ? 'ar' : 'en');
 	};
-	const closeSideBar = (): void => {
-		try {
-			// TODO Move all remaining open menu controllers to the headerMenus object
-			document.getElementById('main-drawer').checked = false;
-		} catch (e) {
-			//
-		}
-	};
 
 	const closeAllMenus = (): void => {
 		headerMenus.account = false;
@@ -98,7 +90,12 @@
 <svelte:window on:keydown={escapeClick} />
 
 <main class="shadow-lg bg-base-200 drawer">
-	<input id="main-drawer" type="checkbox" class="drawer-toggle" />
+	<input
+		id="main-drawer"
+		type="checkbox"
+		bind:checked={headerMenus.sidebar}
+		class="drawer-toggle"
+	/>
 	<div class="flex flex-col drawer-content">
 		<div
 			class="flex items-center sm:justify-evenly lg:justify-around mb-2 shadow-lg bg-base-100 text-base-content"
@@ -221,7 +218,12 @@
 		</div>
 		<slot />
 	</div>
-	<Sidebar {pages} on:closeSideBar={closeSideBar} />
+	<Sidebar
+		{pages}
+		on:closeSideBar={() => {
+			headerMenus.sidebar = false;
+		}}
+	/>
 </main>
 
 <style lang="postcss">
