@@ -5,8 +5,8 @@
 	import CartDropdownCard from './Cards/cart.svelte';
 	import Sidebar from './Sidebar/sidebar.svelte';
 	import type { Product } from '$lib/Types/Data/product';
-	import type { MenuStatus } from '$lib/Types/UI/header';
 	import type { User } from '$lib/Types/Auth/user';
+	import HeaderMenus from '$lib/Types/UI/header';
 	export let user: User = {
 		userName: 'Amr',
 		isUserLoggedIn: true
@@ -35,13 +35,7 @@
 		}
 	];
 
-	let openMenus: MenuStatus = {
-		account: false,
-		sidebar: false,
-		cart: false,
-		language: false,
-		search: false
-	};
+	let headerMenus = new HeaderMenus();
 	let ltr = true;
 	onMount(() => {
 		try {
@@ -57,20 +51,28 @@
 	};
 	const closeSideBar = (): void => {
 		try {
-			// TODO Move all remaining open menu controllers to the openMenus object
+			// TODO Move all remaining open menu controllers to the headerMenus object
 			document.getElementById('main-drawer').checked = false;
 		} catch (e) {
 			//
 		}
 	};
+
 	const closeAllMenus = (): void => {
-		openMenus.account = false;
-		openMenus.sidebar = false;
-		openMenus.cart = false;
-		openMenus.language = false;
-		openMenus.search = false;
+		headerMenus.account = false;
+		headerMenus.sidebar = false;
+		headerMenus.cart = false;
+		headerMenus.language = false;
+		headerMenus.search = false;
+	};
+	const handleKeyDown = (event: KeyboardEvent) => {
+		if (event.key === 'Escape' || event.key === 'Esc') {
+			closeAllMenus();
+		}
 	};
 </script>
+
+<svelte:window on:keydown={handleKeyDown} />
 
 <main class="shadow-lg bg-base-200 drawer">
 	<input id="main-drawer" type="checkbox" class="drawer-toggle" />
@@ -131,8 +133,7 @@
 				<button
 					class="hidden md:inline-block btn btn-square btn-ghost"
 					on:click={() => {
-						closeAllMenus();
-						openMenus.language = !openMenus.language;
+						headerMenus.language = true;
 					}}
 				>
 					<!-- Language switcher -->
@@ -143,13 +144,12 @@
 						/>
 					</svg>
 				</button>
-				{#if openMenus.language}
+				{#if headerMenus.language}
 					<LanguageDropdownCard on:overlayClick={closeAllMenus} />
 				{/if}
 				<button
 					on:click={() => {
-						closeAllMenus();
-						openMenus.account = !openMenus.account;
+						headerMenus.account = true;
 					}}
 					class="account-button hidden md:inline-block btn btn-square btn-ghost"
 				>
@@ -163,14 +163,13 @@
 						/></svg
 					>
 				</button>
-				{#if openMenus.account}
+				{#if headerMenus.account}
 					<AccountDropdownCard {user} on:overlayClick={closeAllMenus} />
 				{/if}
 				<button
 					class="btn btn-square btn-ghost"
 					on:click={() => {
-						closeAllMenus();
-						openMenus.cart = !openMenus.cart;
+						headerMenus.cart = true;
 					}}
 				>
 					{#if cart.length > 0}
@@ -198,7 +197,7 @@
 						>
 					{/if}
 				</button>
-				{#if openMenus.cart}
+				{#if headerMenus.cart}
 					<CartDropdownCard {cart} on:overlayClick={closeAllMenus} />
 				{/if}
 			</div>

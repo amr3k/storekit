@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Overlay from '$lib/Components/overlay.svelte';
+	import { clickOutside } from '$lib/Components/clickOutside';
+
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
 	type User = {
@@ -15,10 +16,10 @@
 	};
 </script>
 
-<Overlay on:overlayClick={overlayClick} />
-
 <div
-	transition:fly={{ duration: 100, y: -20 }}
+	use:clickOutside
+	on:outclick={overlayClick}
+	transition:fly={{ duration: 300, y: -20 }}
 	class="account-dropdown absolute right-auto top-16 w-48 bg-base-100 border border-base-200 rounded-xl overflow-hidden shadow-2xl flex flex-col p-0"
 >
 	<div>

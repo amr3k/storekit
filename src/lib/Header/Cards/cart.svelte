@@ -1,7 +1,8 @@
 <script lang="ts">
-	import Overlay from '$lib/Components/overlay.svelte';
-import type { Product } from '$lib/Types/Data/product';
-	
+	import { clickOutside } from '$lib/Components/clickOutside';
+
+	import type { Product } from '$lib/Types/Data/product';
+
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
 
@@ -18,10 +19,10 @@ import type { Product } from '$lib/Types/Data/product';
 	};
 </script>
 
-<Overlay on:overlayClick={overlayClick} />
-
 <div
-	transition:fly={{ duration: 100, y: -20 }}
+	use:clickOutside
+	on:outclick={overlayClick}
+	transition:fly={{ duration: 300, y: -20 }}
 	class="cart-dropdown absolute right-auto top-16 w-48 bg-base-100 border border-base-200 rounded-xl overflow-hidden shadow-2xl flex flex-col p-0"
 >
 	<div class="cart-header flex justify-center">

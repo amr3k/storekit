@@ -1,6 +1,7 @@
 <script lang="ts">
-	import Overlay from '$lib/Components/overlay.svelte';
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { clickOutside } from '$lib/Components/clickOutside';
+
+	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 	const dispatch = createEventDispatcher();
@@ -9,10 +10,10 @@
 	};
 </script>
 
-<Overlay on:overlayClick={overlayClick} />
-
 <div
-	transition:fly={{ duration: 100, y: -20 }}
+	use:clickOutside
+	on:outclick={overlayClick}
+	transition:fly={{ duration: 300, y: -20 }}
 	class="account-dropdown absolute right-auto top-16 w-48 bg-base-100 border border-base-200 rounded-xl overflow-hidden shadow-2xl flex flex-col p-0"
 >
 	<div>
@@ -139,13 +140,13 @@
 	.account-dropdown ul > li {
 		@apply flex justify-items-stretch rounded;
 	}
+	.account-dropdown ul > li:hover {
+		@apply bg-base-200 duration-100;
+	}
 	.account-dropdown ul > li > a {
 		@apply my-1 w-full font-semibold;
 	}
 	.account-dropdown ul > li > a > svg {
 		@apply inline-block w-5 h-5 mx-3;
-	}
-	.account-dropdown ul > li:hover {
-		@apply bg-base-200 duration-100;
 	}
 </style>
