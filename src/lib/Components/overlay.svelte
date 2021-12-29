@@ -7,7 +7,7 @@
 		dispatch('overlayClick');
 	};
 	const handleKeyDown = (event: KeyboardEvent) => {
-		if (event.key === 'Escape') {
+		if (event.key === 'Escape' || event.key === 'Esc') {
 			dispatch('overlayClick');
 		}
 	};
