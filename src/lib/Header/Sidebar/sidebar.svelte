@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Pages } from '$lib/Types/UI/header';
 
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, getContext } from 'svelte';
 
-	export let pages: Pages;
+	let pages: Pages = getContext('pages');
 
 	const dispatch = createEventDispatcher();
 	const closeSideBar = (): void => {

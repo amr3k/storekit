@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import AccountDropdownCard from './Cards/account.svelte';
 	import LanguageDropdownCard from './Cards/language.svelte';
 	import CartDropdownCard from './Cards/cart.svelte';
@@ -12,7 +12,7 @@
 		userName: 'Amr',
 		isUserLoggedIn: true
 	};
-	const pages: Pages = [
+	setContext('pages', [
 		{
 			title: 'Home',
 			url: '/'
@@ -33,7 +33,7 @@
 			title: 'Outlet',
 			url: '/category/outlet'
 		}
-	];
+	]);
 	let cart: Product[] = [
 		{
 			image:
@@ -129,7 +129,7 @@
 				<a href="/"><img class="w-24" src="/logo/light-bg.svg" alt="Storekit logo" /></a>
 			</div>
 			<div class="hidden w-1/3 px-2 mx-2 lg:flex lg:flex-1 lg:justify-center">
-				<PageList {pages} />
+				<PageList />
 			</div>
 			<div class="relative w-1/3 pr-2 flex justify-end">
 				<button class="hidden md:inline-block btn btn-square btn-ghost">
@@ -219,7 +219,6 @@
 		<slot />
 	</div>
 	<Sidebar
-		{pages}
 		on:closeSideBar={() => {
 			headerMenus.sidebar = false;
 		}}
