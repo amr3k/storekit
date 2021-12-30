@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { closeAllHeaderMenus } from '$lib/Stores/UI/headerMenus';
+	import { closeAll as closeAllHeaderMenus } from '$lib/Stores/UI/headerMenus';
 	import type { Pages } from '$lib/Types/UI/header.types';
 
 	let pages: Pages = getContext('pages');
