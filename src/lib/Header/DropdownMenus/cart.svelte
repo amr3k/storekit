@@ -51,36 +51,3 @@
 		</div>
 	</div>
 </div>
-
-<style lang="postcss">
-	.account-dropdown ul > li {
-		@apply flex justify-items-stretch rounded;
-	}
-	.account-dropdown ul > li > a {
-		@apply my-1 w-full font-semibold;
-	}
-	.account-dropdown ul > li > a > svg {
-		@apply inline-block w-5 h-5 mx-3;
-	}
-	.account-dropdown ul > li:hover {
-		@apply bg-base-200 duration-100;
-	}
-	.account-dropdown ul > li:hover svg {
-		@apply duration-100;
-	}
-	.account-li:hover svg {
-		@apply fill-sky-500;
-	}
-	.wishlist-li:hover svg {
-		@apply fill-rose-600;
-	}
-	.faq-li:hover svg {
-		@apply fill-cyan-500;
-	}
-	.logout-li:hover svg {
-		@apply fill-red-500;
-	}
-	.divider {
-		@apply mx-auto my-1 border-b border-b-transparent text-neutral;
-	}
-</style>

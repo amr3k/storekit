@@ -3,7 +3,10 @@
 	import Sidebar from './Sidebar/sidebar.svelte';
 	import PageList from './pageList.svelte';
 	import Buttons from './buttons.svelte';
-	import { sidebarHeaderMenu, closeAllHeaderMenus } from '$lib/Stores/UI/headerMenus';
+	import {
+		sidebar as sidebarHeaderMenu,
+		closeAll as closeAllHeaderMenus
+	} from '$lib/Stores/UI/headerMenus';
 	setContext('pages', [
 		{
 			title: 'Home',

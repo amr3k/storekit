@@ -7,10 +7,10 @@
 	import LanguageDropdownCard from './DropdownMenus/language.svelte';
 	import CartDropdownCard from './DropdownMenus/cart.svelte';
 	import {
-		closeAllHeaderMenus,
-		accountHeaderMenu,
-		languageHeaderMenu,
-		cartHeaderMenu
+		closeAll as closeAllHeaderMenus,
+		account as accountHeaderMenu,
+		language as languageHeaderMenu,
+		cart as cartHeaderMenu
 	} from '$lib/Stores/UI/headerMenus';
 
 	let user: User = getContext('header-user');
