@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import type { Pages } from '$lib/Types/UI/header';
+	import type { Pages } from '$lib/Types/UI/header.types';
 	import { getContext } from 'svelte';
 
 	let pages: Pages = getContext('pages');
