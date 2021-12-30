@@ -7,5 +7,5 @@
 </svelte:head>
 
 <div class="flex justify-center">
-	<SendButton title="Email us"/>
+	<SendButton title="Email us" />
 </div>

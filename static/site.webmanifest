@@ -1,20 +1,20 @@
 {
-    "name": "Storekit",
-    "short_name": "Storekit",
-    "description": "Storekit is an e-commerce theme built with SvelteKit.",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#ffffff",
-    "background_color": "#000000",
-    "display": "standalone"
+	"name": "Storekit",
+	"short_name": "Storekit",
+	"description": "Storekit is an e-commerce theme built with SvelteKit.",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-384x384.png",
+			"sizes": "384x384",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#ffffff",
+	"background_color": "#000000",
+	"display": "standalone"
 }

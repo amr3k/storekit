@@ -10,7 +10,7 @@
 
 	let totalPrice = cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
 
-	console.log(cart.length);
+	// console.log(cart.length);
 
 	const dispatch = createEventDispatcher();
 

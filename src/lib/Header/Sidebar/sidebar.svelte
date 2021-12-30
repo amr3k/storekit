@@ -1,14 +1,11 @@
 <script lang="ts">
-	import type { Pages } from '$lib/Types/UI/header';
-
-	import { createEventDispatcher, getContext } from 'svelte';
+	import { getContext } from 'svelte';
+	import { closeAllHeaderMenus } from '$lib/Stores/UI/headerMenus';
+	import type { Pages } from '$lib/Types/UI/header.types';
 
 	let pages: Pages = getContext('pages');
 
-	const dispatch = createEventDispatcher();
-	const closeSideBar = (): void => {
-		dispatch('closeSideBar');
-	};
+	const closeSideBar = (): void => closeAllHeaderMenus();
 </script>
 
 <!-- TODO convert hidden icons to appropriate elements [Language switcher => dropdown menu] -->

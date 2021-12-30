@@ -4,16 +4,16 @@ const config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Open Sans', 'sans-serif'],
+				sans: ['Open Sans', 'sans-serif']
 			},
 			keyframes: {
-				"fly-1": {
+				'fly-1': {
 					from: {
 						transform: 'translateY(0.1em)'
 					},
 					to: {
 						transform: 'translateY(-0.1em)'
-					},
+					}
 				}
 			}
 		}
@@ -23,7 +23,7 @@ const config = {
 		require('@tailwindcss/typography'),
 		require('daisyui'),
 		require('tailwindcss-flip'),
-		require('@tailwindcss/forms'),
+		require('@tailwindcss/forms')
 	],
 	// config (optional)
 	daisyui: {
