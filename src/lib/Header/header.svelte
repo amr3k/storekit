@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, setContext } from 'svelte';
+	import { setContext } from 'svelte';
 	import Sidebar from './Sidebar/sidebar.svelte';
 	import PageList from './pageList.svelte';
 	import Buttons from './buttons.svelte';
@@ -57,18 +57,6 @@
 		}
 	]);
 	let ltr = true;
-	onMount(() => {
-		try {
-			ltr = window.getComputedStyle(document.body).direction === 'ltr';
-		} catch (e) {
-			ltr = true;
-		}
-	});
-	const switchDirection = (): void => {
-		ltr = !ltr;
-		document.dir = ltr ? 'ltr' : 'rtl';
-		document.documentElement.setAttribute('lang', ltr ? 'ar' : 'en');
-	};
 
 	const escapeClick = (event: KeyboardEvent) => {
 		if (event.key === 'Escape' || event.key === 'Esc') {
