@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html {
-	@apply antialiased;
+	@apply antialiased selection:bg-neutral selection:text-neutral-content;
 }
 html,
 body {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/Components/clickOutside';
+	import { setLanguage } from '$lib/Stores/language';
 
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
@@ -7,6 +8,12 @@
 	const dispatch = createEventDispatcher();
 	const overlayClick = () => {
 		dispatch('overlayClick');
+	};
+
+	const switchLanguage = (language: string) => {
+		setLanguage(language);
+		document.dir = language === 'en' ? 'ltr' : 'rtl';
+		document.documentElement.setAttribute('lang', language);
 	};
 </script>
 
@@ -22,131 +29,40 @@
 		</div>
 		<ul class="bg-base-100 p-2">
 			<li dir="rtl" class="text-right">
-				<a href="/language/ar" on:click={overlayClick}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-						viewBox="0 0 640 480"
-						><path d="M0 320h640v160H0z" /><path fill="#fff" d="M0 160h640v160H0z" /><path
-							fill="#ce1126"
-							d="M0 0h640v160H0z"
-						/><g fill="#fff" stroke="#c09300" transform="matrix(.8 0 0 .8 -40 0)"
-							><path
-								stroke-linejoin="round"
-								stroke-width="1.3"
-								d="m451 302 68 64-5-115c0-18-16-14-27-8-11 8-24 8-37 3-13 5-26 5-37-3-11-6-27-10-27 8l-5 115 70-64z"
-							/><path
-								id="a"
-								fill="#c09300"
-								stroke="none"
-								d="m394 247-5 112-8 7 5-115a24 24 0 0 1 7-4zm9 8-4 94-8 8 5-109 7 6zm9 7-3 78-7 6 4-89 6 5zm9 4-3 66-6 6 3-75 6 3zm9 0-2 55-7 7 3-62h6z"
-							/><use
-								xlink:href="#a"
-								width="100%"
-								height="100%"
-								transform="matrix(-1 0 0 1 900 0)"
-							/><path
-								fill="#c09300"
-								stroke-width="1.1"
-								d="m453 315 10 44-3 3-4-2-5-39 2 39-3 4-3-4 2-39-5 39-4 2-3-3 10-44h6z"
-							/><g id="b" fill="none" stroke-linejoin="round" stroke-width="1.3"
-								><path fill="#fff" stroke-width="1.2" d="m429 296-20 68 27 4 11-51-18-21z" /><path
-									d="m422 319 2 6 13-12"
-								/><path
-									d="m431 305 2 24 8-10m-3 4 4 15m2-6-9 14m3 13-3-13-2-14-6 8-2-9-9 8 4 16 6-10 3 10 6-9m-20 16 5-7 4 11 4-8 4 10"
-								/></g
-							><use
-								xlink:href="#b"
-								width="100%"
-								height="100%"
-								transform="matrix(-1 0 0 1 900 0)"
-							/><g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"
-								><path
-									stroke-width="2.4"
-									d="M450 394c20 0 39-2 50-5 5-1 5-3 5-6 5-2 2-8 6-8-4 1-4-5-8-4 0-6-6-7-11-5-9 3-26 4-42 4-16-1-33-1-42-4-5-2-10-1-10 5-4-1-5 5-8 4 3 0 0 6 5 8 0 3 0 5 5 6 11 3 30 5 50 5z"
-								/><path
-									d="M423 364h19c3 0 6 6-1 7l-19-1a231 231 0 0 1-18-4c-6-3-2-7 1-7a105 105 0 0 0 18 5zm54 0h-19c-3 0-6 6 1 7l19-1 18-4c6-3 2-7-1-7a105 105 0 0 1-18 5z"
-								/><path
-									d="M403 360c-5-1-7 5-5 8 0-1 4-1 4-3 1-2-1-2 1-5zm19 15c0-3 3-3 3-6 0-1 0-4-2-4a3 3 0 0 0-3 3c-1 3 2 4 2 7zm23-9c5 0 4 6 2 9 0-2-4-3-4-4 0-3 3-3 2-5zm52-6c5-1 7 5 5 8l-4-3c-1-2 1-2-1-5zm-19 15c0-3-3-3-3-6l2-4a3 3 0 0 1 3 3c1 3-2 4-2 7zm-23-9c-5 0-4 6-2 10 0-3 4-4 4-5 0-3-4-3-2-5z"
-								/><path
-									stroke-width=".9"
-									d="m405 362 4 2-4-2zm8 2 5 2-5-2zm28 4h-5l5-1zm-9 0h-5 5zm63-6a8 8 0 0 0-4 2l4-2zm-7 2-6 2 5-2zm-29 4h5l-5-1zm9 0h5-5z"
-								/><g fill="#c09300" stroke="none"
-									><path
-										d="M403 375v-1l1-1 1 1h-1l-1 1zm55 4v-1l1-1v1h-1zm1 2-1-1 1-1 1 1-1 1z"
-									/><path
-										d="m408 370-1 1h-4l2 1h1v2l-1 2h-1a2 2 0 0 0-2 1l-1 2 2 1h2l3 1 5 1c1 1 1 0 1-1l1-3v-1h-2v3h-2s-2 0-1-1v-2l1-2-2 1-1 1v2h-1c-1 0-2 0-1-1v-2l1-2 1-1v-3zm-4 7v1a1 1 0 0 1 0-1zm-1 5v-1h1v2l-1-1zm3 1a1 1 0 0 1 0-1h1v1a1 1 0 0 1-1 0zm89 0 1-1h1v1l-1 1-1-1zm-85 2v-2h1v1h-1zm22 1v-4l1-3v-3l1-1 1 2-1 1v7l-1 1h-1zm30-10-1 1v3l1 2h-2l-1 1a4 4 0 0 0 0 2v2h1l1-1h6l1-1-1-2v-2l-1-1-1 1 1 1v2h-3v-7l-1-1zm-1 8v1-1zm-30-9h-1v5l-1 2v3h-1v-1l-2-1v-1h1l1-2-2-1-1-3-2 2-2 1v1c0 1 2 1 1 2h-2l-1-1-1-2h-1v4l-2 1c-1 1-2 0-1 1a4 4 0 0 0 2 0l2-1h4l2-1 2 2v1l2 2 2-2 1-2v-7l1-2h-1zm-7 4h1v1l-1 1-1-1 1-1h1zm67-8a8 8 0 0 0-2 0c-1 0-2 1-1 2h3l2 3v3c1 1 0 2-1 1s-2-2-3-1l-1 2c-2 1-2-1-2-1l-3-2-1-3c-1 1-2 2-1 3s-1 1-1 2l-1 3-2-2h-1l-2 2v2h1l1 1-2 2h2c1-1 2-1 2-3l2-1 3 1c1 1 2 2 3 1a2 2 0 0 0 1-2l2-1h3l2-1 5-2c2 0 0-1 0-2-1 0-2 2-4 1l-1-3-1-4-2-1zm-7 9v1l1 1h-2v-1l1-1zm6 1h1v1h-1l-1-1h1zm-9 0h1v1h-1c-1 0 0 0 0 0v-1zm-5 1a1 1 0 0 1 0 1h-1v-1a1 1 0 0 1 1 0zm9 2h1-2 1zm-17 4h1a3 3 0 0 0 1-1v-3a2 2 0 0 0-1-1v-1l1-2v1l1 1 1 1v4h-1l-1 1h-2zm-7 1v-2h1l1 1 1-1a1 1 0 0 1 1 0v2h-1a1 1 0 0 1-1-1l-1 1h-1zm-20-9-1 1v2l-1 1-2-3-1 2 1 2-1 3h-3c-1 1 1 1 1 1l3-1 2-2 5 1h2l2 2h2l1-2h5l1-1-1-2v-2h-2l-2 3-1-1v-1l-2-1h-6l-1-2a1 1 0 0 0-1 0zm2 4h6v3a1 1 0 0 1-1 0v-2a1 1 0 0 0-1 0h-4l-1-1a2 2 0 0 1 1-1zm11 0h1v1h-2l1-1z"
-									/></g
-								></g
-							><path
-								stroke-width="1.1"
-								d="M450 327c33-25 30-62 30-62l-3 1c-7 0-23-4-27-9-4 4-20 9-27 9l-3-1s-3 37 30 62z"
-							/><path
-								stroke-width=".9"
-								d="M477 268h-1c-6 0-20-3-26-8-6 5-20 8-26 8a5 5 0 0 1-1 0 73 73 0 0 0 2 19 71 71 0 0 0 25 37 71 71 0 0 0 25-37 73 73 0 0 0 2-19z"
-							/><path
-								fill="#c09300"
-								stroke="none"
-								d="M439 265a62 62 0 0 1-16 3v4a73 73 0 0 0 2 15 71 71 0 0 0 14 26v-48zm21 0v49a71 71 0 0 0 15-27 73 73 0 0 0 2-15v-4h-1l-16-3z"
-							/><g stroke-width="1.3"
-								><path
-									stroke-width="1.2"
-									d="m462 253-1-3 9 2c-4-2-8-15-8-26 1-11-1-15-3-16-2-2-8-4-12-4-3-1-2 1-2 1h-11c-2 1-3 8-1 7 3-3 6-1 8 2s2 10-1 19a60 60 0 0 1-10 17c4 0 10-3 10-3l-2 5 8-5 4 4 4-4s3 4 8 4z"
-								/><path
-									fill="none"
-									d="M446 228s-2 16-6 21m10-22s-1 17-4 22m7-21 1 21m3-20s1 15 4 20"
-								/><path
-									fill="#c09300"
-									stroke-width=".3"
-									d="M442 220a8 8 0 0 0-1-4c-2-3-5-5-8-2 0 0 1-4 3-4s7 1 10 8h-3l-1 2z"
-								/><path
-									fill="#c09300"
-									stroke-width=".3"
-									d="m432 209 2-2h11s-1-1 2-1c4 0 10 2 12 4a8 8 0 0 1 2 2l-5-1h-3l-2 1-2 2-1-1-1-1-5-2c-2-2-3-3-6-2-3 0-4 2-4 2v-1z"
-								/><circle cx="448.8" cy="210.7" r="1.2" stroke="none" /></g
-							></g
-						></svg
+				<button
+					on:click={() => {
+						switchLanguage('ar');
+					}}
+				>
+					<div
+						class="before:bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAlCAYAAAAA7LqSAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAetJREFUWIXtlk9rE0EcQN/M/kmySVpjI7RY0hJBKB49qEevXvqBvIn9KF5yUSgI+gkUiydPKraNFxNMSNNstrs7f7wo+AFmcC37jnuYt4/fDDPiY++u5Rog//UPuKIOqRp1SNWoQ6pGHVI16pCqIeYvX3t7a1lTcDk9IU62aW4MfWkAENZabyFG5yx/vKO1eYdGZ9eXBvC0tYpsisoXyKCBkCFXyzOstah8QZFNfSjdh+gyZfzhCIvl6vIcISQybJGvvmOxjE+O0GXqWkvoekFdpszOjkFIhJDc2H2MLlOmn19grWV2eszg/lOCqO3U62EiK4SMKNcT5uM3WKMwKmM+fku5niBkhC5XrrXuQ4xaI4MmWmUkvYPfXwVJ7wCtM2TQxKi1a62fiQRRglEp/eEhUXOLRndAf3iIKVOCKPEyES9nRIZtEJI42eHnt1cA3Nx7gpAhMmx7OezuJ6JS4vYO+w+eEcRdsosvZBdfCeIu+w+f0+jcRiv3Ic4vxHT2CVUsUfkCXSzJV2Ms0OwMkGFCnNwiiDZob91zqfVzsy8n7zG6oFxPkGECWMJ4A5UvCFt9NrcfuVYiRqOR8xCjS/LVOdYY4M/yAiEljc4eMohcKxF/mf5rrs0zvg6pGnVI1ahDqkYdUjXqkKrxC62KxlYsiVvMAAAAAElFTkSuQmCC')]"
 					>
-					<span>العربية</span>
-				</a>
+						العربية
+					</div>
+				</button>
 			</li>
 			<li dir="ltr">
-				<a href="/language/en" on:click={overlayClick}>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480"
-						><defs><clipPath id="a"><path fill-opacity=".7" d="M0 0h683v512H0z" /></clipPath></defs
-						><g fill-rule="evenodd" clip-path="url(#a)" transform="scale(.9375)"
-							><g stroke-width="1pt"
-								><path
-									fill="#bd3d44"
-									d="M0 0h973v39H0zm0 79h973v39H0zm0 79h973v39H0zm0 78h973v40H0zm0 79h973v40H0zm0 79h973v39H0zm0 79h973v39H0z"
-								/><path
-									fill="#fff"
-									d="M0 39h973v40H0zm0 79h973v39H0zm0 79h973v39H0zm0 79h973v39H0zm0 78h973v40H0zm0 79h973v40H0z"
-								/></g
-							><path fill="#192f5d" d="M0 0h389v276H0z" /><path
-								fill="#fff"
-								d="m32 12 4 11h11l-9 6 4 11-10-6-9 6 4-11-10-6h12zm65 0 4 11h11l-9 6 4 11-10-6-9 6 4-11-10-6h12zm65 0 4 11h11l-9 6 3 11-9-6-9 6 3-11-9-6h12zm65 0 4 11h11l-9 6 3 11-9-6-9 6 3-11-9-6h11zm65 0 3 11h12l-9 6 3 11-9-6-9 6 3-11-9-6h11zm65 0 3 11h12l-10 6 4 11-9-6-10 6 4-11-9-6h11zM65 39l3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-10 7 4 11-9-7-10 7 4-11-9-7h11zm65 0 3 11h12l-10 7 4 11-9-7-10 7 4-11-9-7h11zm64 0 4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zM32 67l4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 7 3 11-9-7-9 7 3-11-9-7h12zm65 0 4 11h11l-9 7 3 11-9-7-9 7 3-11-9-7h12zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-10 7 4 11-9-7-10 7 4-11-9-7h11zM65 95l3 10h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 10h12l-10 7 4 11-9-7-10 7 4-11-9-7h11zm65 0 3 10h12l-10 7 4 11-9-7-10 7 4-11-9-7h11zm64 0 4 10h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 10h11l-9 7 3 11-9-7-9 7 3-11-9-7h12zM32 122l4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 7 3 11-9-7-9 7 3-11-9-7h12zm65 0 4 11h11l-9 7 3 11-9-7-9 7 3-11-9-7h12zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-10 7 4 11-9-7-10 7 4-11-9-7h11zM65 150l3 11h12l-9 6 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-10 6 4 11-9-7-10 7 4-11-9-7h11zm65 0 3 11h12l-10 6 4 11-9-7-10 7 4-11-9-7h11zm64 0 4 11h11l-9 6 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 6 3 11-9-7-9 7 3-11-9-7h12zM32 177l4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 7 3 11-9-7-9 7 3-11-9-7h12zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-10 7 4 11-9-7-10 7 4-11-9-7h11zM65 205l3 11h12l-9 6 3 11-9-6-9 6 3-11-9-6h11zm65 0 3 11h12l-10 6 4 11-9-6-10 6 4-11-9-6h11zm65 0 3 11h12l-10 6 4 11-9-6-10 6 4-11-9-6h11zm64 0 4 11h11l-9 6 4 11-10-6-9 6 4-11-10-6h12zm65 0 4 11h11l-9 6 3 11-9-6-9 6 3-11-9-6h12zM32 232l4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 4 11h11l-9 7 4 11-10-7-9 7 4-11-10-7h12zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-9 7 3 11-9-7-9 7 3-11-9-7h11zm65 0 3 11h12l-10 7 4 11-9-7-10 7 4-11-9-7h11z"
-							/></g
-						></svg
+				<button
+					on:click={() => {
+						switchLanguage('en');
+					}}
+				>
+					<div
+						class="before:bg-[url('data:image/png;base64,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')]"
 					>
-					<span>English</span>
-				</a>
+						English
+					</div>
+				</button>
 			</li>
 		</ul>
 	</div>
 </div>
 
 <style lang="postcss">
-	.account-dropdown ul > li {
-		@apply flex justify-items-stretch rounded;
+	button {
+		@apply w-full flex;
 	}
-	.account-dropdown ul > li:hover {
-		@apply bg-base-200 duration-100;
-	}
-	.account-dropdown ul > li > a {
-		@apply my-1 w-full font-semibold;
-	}
-	.account-dropdown ul > li > a > svg {
-		@apply inline-block w-5 h-5 mx-3;
+	button > div:before {
+		@apply inline-block bg-cover rounded-full bg-no-repeat bg-center mx-1 w-4 h-4;
 	}
 </style>
