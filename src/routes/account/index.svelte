@@ -13,15 +13,11 @@
 </script>
 
 <script lang="ts">
-	export let params, session, stuff;
-	console.log(params);
-	console.log(session);
-	console.log(stuff);
+	export const params = null;
+	export const session = null;
+	export const stuff = null;
 </script>
 
 <div class="flex flex-col items-center">
-	<h1 class="text-5xl">Admin page</h1>
-	<pre>{params}</pre>
-	<pre>{session}</pre>
-	<pre>{stuff}</pre>
+	<h1 class="text-5xl">Account page</h1>
 </div>
