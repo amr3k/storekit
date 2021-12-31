@@ -7,6 +7,7 @@
 		sidebar as sidebarHeaderMenu,
 		closeAll as closeAllHeaderMenus
 	} from '$lib/Stores/UI/headerMenus';
+	import { language as languageStore } from '$lib/Stores/language';
 	setContext('pages', [
 		{
 			title: 'Home',
@@ -56,8 +57,6 @@
 			quantity: 1
 		}
 	]);
-	let ltr = true;
-
 	const escapeClick = (event: KeyboardEvent) => {
 		if (event.key === 'Escape' || event.key === 'Esc') {
 			closeAllHeaderMenus();
@@ -70,12 +69,12 @@
 <main class="shadow-lg bg-base-200 drawer">
 	<input id="main-drawer" type="checkbox" bind:checked={$sidebarHeaderMenu} class="drawer-toggle" />
 	<div class="flex flex-col drawer-content">
-		<div
+		<nav
 			class="flex items-center sm:justify-evenly lg:justify-around mb-2 shadow-lg bg-base-100 text-base-content"
 		>
 			<div class="lg:hidden pl-2 w-1/3">
 				<label for="main-drawer" class="btn btn-square btn-ghost">
-					{#if ltr}
+					{#if $languageStore === 'en'}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24"
@@ -105,7 +104,7 @@
 				<PageList />
 			</div>
 			<Buttons />
-		</div>
+		</nav>
 		<slot />
 	</div>
 	<Sidebar />
