@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let title: string = 'Send';
+	export let title = 'Send';
 </script>
 
 <button
