@@ -11,6 +11,7 @@
 	};
 
 	const switchLanguage = (language: string) => {
+		overlayClick();
 		setLanguage(language);
 		document.dir = language === 'en' ? 'ltr' : 'rtl';
 		document.documentElement.setAttribute('lang', language);
