@@ -1,9 +1,14 @@
 import { writable } from 'svelte/store';
 import type { Writable } from 'svelte/types/runtime/store';
 
-export const language: Writable<string> = writable('en');
+const languageLocalStorage = localStorage.getItem('language') || 'en';
 
+export const language: Writable<string> = writable(languageLocalStorage);
+
+language.subscribe(value => {
+	localStorage.setItem('language', value);
+});
 
 export const setLanguage = (lang: string): void => {
-	language.update(() => lang);
+	language.set(lang);
 }
