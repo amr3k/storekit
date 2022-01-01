@@ -1,27 +1,16 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/Components/clickOutside';
-
-	import type { Product } from '$lib/Types/Data/product';
-
-	import { createEventDispatcher } from 'svelte';
+	import type { Product } from '$lib/Types/Data/product.types';
 	import { fly } from 'svelte/transition';
 
 	export let cart: Product[];
-
 	let totalPrice = cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
 
 	// console.log(cart.length);
-
-	const dispatch = createEventDispatcher();
-
-	const overlayClick = () => {
-		dispatch('overlayClick');
-	};
 </script>
 
 <div
 	use:clickOutside
-	on:outclick={overlayClick}
 	transition:fly={{ duration: 300, y: -20 }}
 	class="cart-dropdown absolute right-auto top-16 w-48 bg-base-100 border border-base-200 rounded-xl overflow-hidden shadow-2xl flex flex-col p-0"
 >

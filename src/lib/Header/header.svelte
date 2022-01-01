@@ -8,6 +8,7 @@
 		closeAll as closeAllHeaderMenus
 	} from '$lib/Stores/UI/headerMenus';
 	import { language as languageStore } from '$lib/Stores/language';
+	import Footer from '$lib/Footer/footer.svelte';
 	setContext('pages', [
 		{
 			title: 'Home',
@@ -66,7 +67,7 @@
 
 <svelte:window on:keydown={escapeClick} />
 
-<main class="shadow-lg bg-base-200 drawer">
+<header class="shadow-lg bg-base-200 drawer min-h-screen">
 	<input id="main-drawer" type="checkbox" bind:checked={$sidebarHeaderMenu} class="drawer-toggle" />
 	<div class="flex flex-col drawer-content">
 		<nav
@@ -106,12 +107,7 @@
 			<Buttons />
 		</nav>
 		<slot />
+		<Footer />
 	</div>
 	<Sidebar />
-</main>
-
-<style lang="postcss">
-	main.drawer {
-		min-height: 100vh;
-	}
-</style>
+</header>
