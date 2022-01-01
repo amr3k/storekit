@@ -1,17 +1,12 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/Components/clickOutside';
 	import { setLanguage } from '$lib/Stores/language';
+	import { closeAll as closeAllMenus } from '$lib/Stores/UI/headerMenus';
 
-	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	const dispatch = createEventDispatcher();
-	const overlayClick = () => {
-		dispatch('overlayClick');
-	};
-
 	const switchLanguage = (language: string) => {
-		overlayClick();
+		closeAllMenus();
 		setLanguage(language);
 		document.dir = language === 'en' ? 'ltr' : 'rtl';
 		document.documentElement.setAttribute('lang', language);
@@ -20,7 +15,6 @@
 
 <div
 	use:clickOutside
-	on:outclick={overlayClick}
 	transition:fly={{ duration: 300, y: -20 }}
 	class="account-dropdown absolute right-auto top-16 w-48 bg-base-100 border border-base-200 rounded-xl overflow-hidden shadow-2xl flex flex-col p-0"
 >

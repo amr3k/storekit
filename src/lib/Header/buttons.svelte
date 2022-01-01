@@ -6,8 +6,9 @@
 	import AccountDropdownCard from './DropdownMenus/account.svelte';
 	import LanguageDropdownCard from './DropdownMenus/language.svelte';
 	import CartDropdownCard from './DropdownMenus/cart.svelte';
+	import SearchDropdownCard from './DropdownMenus/search.svelte';
 	import {
-		closeAll as closeAllHeaderMenus,
+		search as searchHeaderMenu,
 		account as accountHeaderMenu,
 		language as languageHeaderMenu,
 		cart as cartHeaderMenu
@@ -15,12 +16,15 @@
 
 	let user: User = getContext('header-user');
 	let cart: Product[] = getContext('cart');
-
-	const closeAllMenus = () => closeAllHeaderMenus();
 </script>
 
 <div class="relative w-1/3 pr-2 flex justify-end">
-	<button class="hidden md:inline-block btn btn-square btn-ghost">
+	<button
+		class="hidden md:inline-block btn btn-square btn-ghost"
+		on:click={() => {
+			searchHeaderMenu.set(true);
+		}}
+	>
 		<!-- search -->
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-base-content">
 			><path fill="none" d="M0 0h24v24H0z" /><path
@@ -28,10 +32,13 @@
 			/></svg
 		>
 	</button>
+	{#if $searchHeaderMenu}
+		<SearchDropdownCard />
+	{/if}
 	<button
 		class="hidden md:inline-block btn btn-square btn-ghost"
 		on:click={() => {
-			languageHeaderMenu.update(() => true);
+			languageHeaderMenu.set(true);
 		}}
 	>
 		<!-- Language switcher -->
@@ -43,13 +50,13 @@
 		</svg>
 	</button>
 	{#if $languageHeaderMenu}
-		<LanguageDropdownCard on:overlayClick={closeAllMenus} />
+		<LanguageDropdownCard />
 	{/if}
 	<button
 		on:click={() => {
-			accountHeaderMenu.update(() => true);
+			accountHeaderMenu.set(true);
 		}}
-		class="account-button hidden md:inline-block btn btn-square btn-ghost"
+		class="hidden md:inline-block btn btn-square btn-ghost"
 	>
 		<!-- User -->
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-base-content">
@@ -60,12 +67,12 @@
 		</svg>
 	</button>
 	{#if $accountHeaderMenu}
-		<AccountDropdownCard {user} on:overlayClick={closeAllMenus} />
+		<AccountDropdownCard {user} />
 	{/if}
 	<button
 		class="btn btn-square btn-ghost"
 		on:click={() => {
-			cartHeaderMenu.update(() => true);
+			cartHeaderMenu.set(true);
 		}}
 	>
 		{#if cart.length > 0}
@@ -91,7 +98,7 @@
 		{/if}
 	</button>
 	{#if $cartHeaderMenu}
-		<CartDropdownCard {cart} on:overlayClick={closeAllMenus} />
+		<CartDropdownCard {cart} />
 	{/if}
 </div>
 

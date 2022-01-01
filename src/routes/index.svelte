@@ -1,7 +1,5 @@
 <script lang="ts">
 	import SendButton from '$lib/Components/Buttons/SendButton.svelte';
-
-	//
 </script>
 
 <svelte:head>
