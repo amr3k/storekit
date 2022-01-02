@@ -8,7 +8,7 @@
 		closeAll as closeAllHeaderMenus
 	} from '$lib/Stores/UI/headerMenus';
 	import { language as languageStore } from '$lib/Stores/language';
-	import Footer from '$lib/Footer/footer.svelte';
+	import Footer from '$lib/Components/Footer/footer.svelte';
 	setContext('pages', [
 		{
 			title: 'Home',

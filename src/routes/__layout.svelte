@@ -1,5 +1,5 @@
 <script>
-	import Header from '$lib/Header/header.svelte';
+	import Header from '$lib/Components/Header/header.svelte';
 	import { language as languageStore } from '$lib/Stores/language';
 	import { onMount } from 'svelte';
 	onMount(() => {
