@@ -1,3 +1,8 @@
+<script context="module">
+	// show all products by default and filter after each search
+	// No form submission
+</script>
+
 <script lang="ts">
 	import Warning from '$lib/Components/Alerts/warning.svelte';
 	import { closeAll as closeAllMenus } from '$lib/Stores/UI/headerMenus';
