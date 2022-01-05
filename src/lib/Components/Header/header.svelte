@@ -27,8 +27,8 @@
 			url: '/category/accessories'
 		},
 		{
-			title: 'Outlet',
-			url: '/category/outlet'
+			title: 'Shoes',
+			url: '/category/shoes'
 		}
 	]);
 	setContext('header-user', {
