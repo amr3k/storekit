@@ -114,7 +114,9 @@
 	<form action="" on:submit|preventDefault={searchProducts}>
 		<div class="form-control px-12">
 			<div class="relative">
+				<!-- svelte-ignore a11y-autofocus -->
 				<input
+					autofocus
 					type="search"
 					bind:value={searchTerm}
 					placeholder="Search for products"
