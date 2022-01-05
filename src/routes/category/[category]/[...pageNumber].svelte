@@ -4,6 +4,8 @@
 
 	export async function load({ params, fetch, session, stuff }) {
 		console.log(params);
+		// const categories = params.category; // Search categories store for the category provided in the URL
+		const pageNumber = params.pageNumber || 1;
 		const res = await fetch('/api/category/1', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -15,6 +17,7 @@
 			return {
 				status: 200,
 				props: {
+					pageNumber,
 					products
 				}
 			};
@@ -30,7 +33,7 @@
 </script>
 
 <script lang="ts">
-	export let page: number = 1; // For pagination
+	export let pageNumber: number; // For pagination
 	export let products: Product[];
 	export let error: Error;
 </script>
@@ -47,3 +50,5 @@
 {:else}
 	<p>Error</p>
 {/if}
+
+<h1>This is page: {pageNumber}</h1>
