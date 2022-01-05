@@ -3,7 +3,6 @@
 	import type { Product } from '$lib/Types/Data/product.types';
 
 	export async function load({ params, fetch, session, stuff }) {
-		console.log(params);
 		// const categories = params.category; // Search categories store for the category provided in the URL
 		const pageNumber = params.pageNumber || 1;
 		const res = await fetch('/api/category/1', {

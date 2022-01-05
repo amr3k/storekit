@@ -1,11 +1,10 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/env';
-
 import type { Writable } from 'svelte/types/runtime/store';
 
-const languageLocalStorage = browser && localStorage.getItem('language');
-
-export const language: Writable<string> = writable(languageLocalStorage || 'en');
+export const language: Writable<string> = writable(
+	(browser && localStorage.getItem('language')) || 'en'
+);
 
 language.subscribe((value) => {
 	if (browser) {
