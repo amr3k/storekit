@@ -1,4 +1,4 @@
-import { encode } from 'js-base64';
+import { WOO_AUTH_HEADER } from '$lib/config';
 import type { Request, Response } from '@sveltejs/kit';
 
 export async function post(req: Request) {
@@ -13,8 +13,7 @@ export async function post(req: Request) {
 			method: 'GET',
 			headers: {
 				Accept: 'Application/json',
-				Authorization:
-					'Basic ' + encode(import.meta.env.VITE_WOO_KEY + ':' + import.meta.env.VITE_WOO_SECRET)
+				Authorization: WOO_AUTH_HEADER
 			}
 		});
 
