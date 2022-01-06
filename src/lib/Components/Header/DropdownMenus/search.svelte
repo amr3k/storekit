@@ -10,7 +10,7 @@
 	import { fly } from 'svelte/transition';
 
 	let results = [];
-	let searchTerm: string = '';
+	let searchTerm = '';
 
 	const searchProducts = (): void => {
 		if (searchTerm.length > 2) {

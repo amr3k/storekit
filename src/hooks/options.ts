@@ -1,3 +1,4 @@
+/*
 import { setLanguage } from '$lib/Stores/language';
 import * as cookieLib from 'cookie';
 
@@ -10,3 +11,5 @@ export const userLanguage = async (httpCookieHeader) => {
 
 	return cookieObject.language || 'en';
 };
+*/
+export {};

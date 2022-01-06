@@ -18,7 +18,6 @@ A next generation E-Commerce theme built with SvelteKit.
   > One example for this is in commit (63737b89b3881f891c68513189361a485e5c9ab2) When I found that `$page.path` was replaced with `$page.url.pathname`
 - Always check `<slot />` in layouts and children components.
 
-
 ## Typescript (&Javascript)
 
 > What a discovery!
