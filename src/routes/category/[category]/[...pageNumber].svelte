@@ -2,7 +2,7 @@
 	import { CategoryID } from '$lib/Types/Data/category.types';
 	import type { Product } from '$lib/Types/Data/product.types';
 
-	export async function load({ params, fetch, session, stuff }) {
+	export async function load({ url, params, fetch, session, stuff }) {
 		// const categories = params.category; // Search categories store for the category provided in the URL
 		const pageNumber = params.pageNumber || 1;
 		const res = await fetch('/api/category/1', {
@@ -35,6 +35,7 @@
 	export let pageNumber: number; // For pagination
 	export let products: Product[];
 	export let error: Error;
+	export let stuff;
 </script>
 
 <svelte:head>
@@ -51,3 +52,5 @@
 {/if}
 
 <h1>This is page: {pageNumber}</h1>
+
+<p class="text-5xl">{stuff}</p>
