@@ -68,7 +68,7 @@
 <svelte:window on:keydown={escapeClick} />
 
 <header class="shadow-lg bg-base-200 drawer min-h-screen">
-	<input id="main-drawer" type="checkbox" bind:checked={$sidebarHeaderMenu} class="drawer-toggle" />
+	<input id="main-drawer" type="checkbox" bind:checked={$sidebarHeaderMenu} class="drawer-toggle absolute -top-96 -left-96" />
 	<div class="flex flex-col drawer-content">
 		<nav
 			class="flex items-center sm:justify-evenly lg:justify-around mb-2 shadow-lg bg-base-100 text-base-content"
