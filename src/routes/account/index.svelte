@@ -2,6 +2,7 @@
 	export const load = async ({ params, fetch, session, stuff }) => {
 		// The load function receives an object containing five fields:
 		// url, params, fetch, session and stuff
+		fetch('https://jsonplaceholder.typicode.com/users');
 		return {
 			props: {
 				params: params,

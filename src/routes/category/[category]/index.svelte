@@ -5,7 +5,7 @@
 	import type { Product } from '$lib/Types/Data/product.types';
 	import { get as getStoreValue } from 'svelte/store';
 
-	export async function load({ url, params, fetch, session, stuff }) {
+	export async function load({ url, params, fetch }) {
 		// Initialize empty array of category IDs
 		let categoriesIDs: number[] = [];
 
@@ -63,7 +63,6 @@
 	export let pageNumber: number; // For pagination
 	export let products: Product[];
 	export let error: Error;
-	export let stuff;
 </script>
 
 <svelte:head>
@@ -80,5 +79,3 @@
 {/if}
 
 <h1>This is page: {pageNumber}</h1>
-
-<p class="text-5xl">{stuff}</p>

@@ -4,7 +4,7 @@
 	import { fly } from 'svelte/transition';
 
 	export let cart: Product[];
-	let totalPrice = cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
+	let totalPrice = cart.reduce((acc, cur) => acc + parseFloat(cur.price) * cur.stock_quantity, 0);
 
 	// console.log(cart.length);
 </script>

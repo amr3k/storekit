@@ -1,5 +1,7 @@
-import { userLanguage } from './options';
-export const handle = async ({ request, resolve }) => {
+import type { Response } from '@sveltejs/kit';
+
+// import { userLanguage } from './options';
+export const handle = async ({ request, resolve }): Promise<Response> => {
 	// request.locals.language = await userLanguage(request.headers.cookie);
 	const response = await resolve(request);
 	return {

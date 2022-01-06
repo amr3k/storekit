@@ -1,8 +1,7 @@
 import { WOO_AUTH_HEADER } from '$lib/config';
 import type { Category } from '$lib/Types/Data/category.types';
-import type { Request } from '@sveltejs/kit';
 
-export const get = async (req: Request) => {
+export const get = async () => {
 	try {
 		const response = await fetch(
 			`${import.meta.env.VITE_WOO_ENDPOINT}/products/categories?per_page=100&hide_empty=true`,
