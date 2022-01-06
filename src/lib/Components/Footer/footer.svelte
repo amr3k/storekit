@@ -30,7 +30,7 @@
 			<h3 class="text-lg">Currency EUR | English</h3>
 		</div>
 		<div class="w-full flex justify-center md:justify-start">
-			<img class="w-36" src="/logo/dark-bg.svg" alt="" />
+			<img class="w-36" src="/logo/dark.png" alt="" />
 		</div>
 	</div>
 	<div class="grid grid-cols-2 gap-4">

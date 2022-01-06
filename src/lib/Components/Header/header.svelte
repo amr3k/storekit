@@ -99,7 +99,7 @@
 				</label>
 			</div>
 			<div class="px-2 w-1/3 flex justify-center lg:justify-start flex-1 lg:flex-none">
-				<a href="/"><img class="w-24" src="/logo/light-bg.svg" alt="Storekit logo" /></a>
+				<a href="/"><img class="w-24" src="/logo/light.png" alt="Storekit logo" /></a>
 			</div>
 			<div class="hidden w-1/3 px-2 mx-2 lg:flex lg:flex-1 lg:justify-center">
 				<PageList />

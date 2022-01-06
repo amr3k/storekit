@@ -1,8 +1,8 @@
 import { WOO_AUTH_HEADER } from '$lib/config';
-import { categoriesStore } from '$lib/Stores/Data/categories';
 import type { Category } from '$lib/Types/Data/category.types';
+import type { Request } from '@sveltejs/kit';
 
-export const fetchCategories = async () => {
+export const get = async (req: Request) => {
 	try {
 		const response = await fetch(
 			`${import.meta.env.VITE_WOO_ENDPOINT}/products/categories?per_page=100&hide_empty=true`,
@@ -15,11 +15,20 @@ export const fetchCategories = async () => {
 		);
 		if (response.ok && response.status === 200) {
 			const data: Category[] = await response.json();
-			categoriesStore.set(data);
-			return data;
+			return {
+				status: 200,
+				body: {
+					data
+				}
+			};
 		}
 	} catch (error) {
 		console.error(error);
-		return [];
+		return {
+			status: 500,
+			body: {
+				error: 'Error fetching categories'
+			}
+		};
 	}
 };
