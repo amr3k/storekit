@@ -2,7 +2,7 @@
 	import { language } from '$lib/Stores/language';
 </script>
 
-<footer class="p-10 md:mt-36 footer bg-base-content text-base-100">
+<footer class="p-10 md:mt-36 footer bg-base-content text-base-100 hidden">
 	<div class="flex flex-col-reverse md:flex-col items-center md:items-start justify-center">
 		<div>
 			<h2 class="text-2xl mb-2 font-bold tracking-tight">We are #dothefuture</h2>

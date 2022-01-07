@@ -69,4 +69,5 @@ To disable this, you can modify `vercel.json` as follows:
 
 # Credits
 
-- [Undraw](https://undraw.co/illustrations)
+- [Undraw](https://undraw.co/illustrations) For awesome illustrations
+- [jovianmoon](https://jovianmoon.io/blog/lazy-loading-images-in-svelte-kit-with-actions) for the lazy loading image function

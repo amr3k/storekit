@@ -15,7 +15,7 @@
 	<ul class="p-4 overflow-y-auto w-80 bg-base-200">
 		{#each pages as page}
 			<li>
-				<a on:click={closeSideBar} href={page.url}>
+				<a sveltekit:prefetch on:click={closeSideBar} href={page.url}>
 					{page.title}
 				</a>
 			</li>

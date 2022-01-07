@@ -33,10 +33,11 @@
 		const pageNumber = parseInt(url.searchParams.get('page')) || 1;
 
 		// Get products of the current category
-		const res = await fetch('/api/category/1', {
+		const res = await fetch('/api/category', {
 			method: 'POST',
 			body: JSON.stringify({
-				categories: [CategoryID.CASUAL_SHOES, CategoryID.ATHLETIC_SHOES]
+				categories: categoriesIDs,
+				pageNumber: pageNumber
 			})
 		});
 		if (res.status === 200) {
@@ -44,38 +45,38 @@
 			return {
 				status: 200,
 				props: {
+					category: params.category,
 					pageNumber,
 					products
 				}
 			};
 		} else {
 			return {
-				status: res.status,
-				props: {
-					error: new Error('Could not get products')
-				}
+				status: 404
 			};
 		}
 	}
 </script>
 
 <script lang="ts">
+	import ProductCard from '$lib/Components/Cards/productCard.svelte';
+
+	export let category: string;
 	export let pageNumber: number; // For pagination
 	export let products: Product[];
-	export let error: Error;
 </script>
 
 <svelte:head>
-	<title>Men shoes</title>
+	<title>Shop the best collection of {category}</title>
 </svelte:head>
-{#if !error}
-	<div>
-		{#each products as product}
-			<p>{product.name}</p>
-		{/each}
-	</div>
-{:else}
-	<p>Error</p>
-{/if}
+
+<h1 class="text-4xl text-center">{category}</h1>
+<div
+	class="px-4 grid gap-4 justify-items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-3/4"
+>
+	{#each products as product}
+		<ProductCard {product} />
+	{/each}
+</div>
 
 <h1>This is page: {pageNumber}</h1>

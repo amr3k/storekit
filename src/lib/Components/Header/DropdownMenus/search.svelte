@@ -1,6 +1,7 @@
 <script context="module">
 	// show all products by default and filter after each search
 	// No form submission
+	// TODO Create a new store to save the search term & results
 </script>
 
 <script lang="ts">

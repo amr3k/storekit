@@ -10,6 +10,7 @@
 <div class="flex items-stretch">
 	{#each pages as page}
 		<a
+			sveltekit:prefetch
 			href={page.url}
 			class:border-b-secondary={page.url === currentPathname}
 			class="mx-3 my-1 font-medium leading-6 border-b border-b-transparent hover:border-b-primary hover:duration-500"
