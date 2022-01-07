@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { clickOutside } from '$lib/Components/clickOutside';
+	import { clickOutside } from '$lib/Actions/clickOutside';
 	import type { Product } from '$lib/Types/Data/product.types';
 	import { fly } from 'svelte/transition';
 

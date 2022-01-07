@@ -15,20 +15,20 @@
 			url: '/'
 		},
 		{
-			title: 'Men',
-			url: '/category/men'
+			title: 'Dresses',
+			url: '/category/dresses'
 		},
 		{
-			title: 'Women',
-			url: '/category/women'
+			title: 'Skirts',
+			url: '/category/skirts'
 		},
 		{
-			title: 'Accessories',
-			url: '/category/accessories'
+			title: 'Pants',
+			url: '/category/pants'
 		},
 		{
 			title: 'Shoes',
-			url: '/category/shoes'
+			url: '/category/womens-shoes'
 		}
 	]);
 	setContext('header-user', {

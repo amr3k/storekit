@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { clickOutside } from '$lib/Components/clickOutside';
+	import { clickOutside } from '$lib/Actions/clickOutside';
 	import { setLanguage } from '$lib/Stores/language';
 	import { closeAll as closeAllMenus } from '$lib/Stores/UI/headerMenus';
 
