@@ -3,15 +3,17 @@ import type { Request } from '@sveltejs/kit';
 
 export async function post(req: Request) {
 	try {
-		// Woocommerce API reference: https://woocommerce.github.io/woocommerce-rest-api-docs/
-		// Get page number for pagination
+		/**
+		 * Woocommerce API reference: https://woocommerce.github.io/woocommerce-rest-api-docs/
+		 * Get product categories
+		 **/
 		const jsonBody = JSON.parse(new TextDecoder().decode(req.rawBody));
 		const categories: number[] = jsonBody.categories;
 		const pageID: number = jsonBody.pageNumber;
 		const _url =
 			import.meta.env.VITE_WOO_ENDPOINT +
 			`/products?category=${categories.join(',')}&per_page=10&page=${pageID}`;
-		const res = await fetch(_url, {
+		const res: Response = await fetch(_url, {
 			method: 'GET',
 			headers: {
 				Accept: 'Application/json',
@@ -32,7 +34,6 @@ export async function post(req: Request) {
 			};
 		}
 	} catch (e) {
-		console.log('Error:', e);
 		return {
 			status: 500,
 			body: e

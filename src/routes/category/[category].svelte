@@ -33,7 +33,7 @@
 		const pageNumber = parseInt(url.searchParams.get('page')) || 1;
 
 		// Get products of the current category
-		const res = await fetch('/api/category', {
+		const res: Response = await fetch('/api/category', {
 			method: 'POST',
 			body: JSON.stringify({
 				categories: categoriesIDs,
