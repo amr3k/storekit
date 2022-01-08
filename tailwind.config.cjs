@@ -5,7 +5,7 @@ const config = {
 		extend: {
 			fontFamily: {
 				sans: ['Open Sans', 'sans-serif']
-			},
+			}
 		}
 	},
 
