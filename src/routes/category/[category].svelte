@@ -19,8 +19,6 @@
 			.forEach((c) => {
 				categoriesIDs.push(c.id);
 			});
-		console.log(getStoreValue(categoriesStore));
-
 		if (categoriesIDs.length === 0) {
 			// If no categories were found, return 404
 			return {
