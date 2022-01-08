@@ -5,7 +5,7 @@
 <button
 	class="group px-3 py-2 rounded-full text-md font-medium text-primary-content bg-primary hover:bg-primary-focus flex items-center justify-center overflow-hidden duration-200 active:scale-95"
 >
-	<div class="svg-wrapper-1">
+	<div class="group-hover:animate-bounce">
 		<div class="svg-wrapper">
 			<svg
 				class="block w-8 mr-2 origin-center transition-transform duration-300 ease-in-out group-hover:rotate-45 group-hover:scale-110"
@@ -20,18 +20,3 @@
 	</div>
 	<span class="ml-1 transition-all duration-300 ease-in-out">{title}</span>
 </button>
-
-<style lang="postcss">
-	button:hover .svg-wrapper {
-		animation: fly-1 0.6s ease-in-out infinite alternate;
-	}
-	@keyframes fly-1 {
-		from {
-			transform: translateY(0.1em);
-		}
-
-		to {
-			transform: translateY(-0.1em);
-		}
-	}
-</style>

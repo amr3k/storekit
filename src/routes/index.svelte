@@ -3,7 +3,9 @@
 </script>
 
 <svelte:head>
-	<title>Shop the latest fashion shoes from StoreKit</title>
+	<title>Explore the latest fashion from StoreKit</title>
 </svelte:head>
 
 <h1 class="font-black text-4xl text-center my-8">Home page</h1>
+
+<SendButton />
