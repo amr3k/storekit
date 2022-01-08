@@ -3,7 +3,11 @@ import type { Category } from '$lib/Types/Data/category.types';
 
 export const get = async () => {
 	try {
-		const response = await fetch(
+		/**
+		 * Woocommerce API reference: https://woocommerce.github.io/woocommerce-rest-api-docs/
+		 * Get product categories
+		 */
+		const res: Response = await fetch(
 			`${import.meta.env.VITE_WOO_ENDPOINT}/products/categories?per_page=100&hide_empty=true`,
 			{
 				headers: {
@@ -12,8 +16,8 @@ export const get = async () => {
 				}
 			}
 		);
-		if (response.ok && response.status === 200) {
-			const data: Category[] = await response.json();
+		if (res.ok && res.status === 200) {
+			const data: Category[] = await res.json();
 			return {
 				status: 200,
 				body: {
@@ -22,7 +26,6 @@ export const get = async () => {
 			};
 		}
 	} catch (error) {
-		console.error(error);
 		return {
 			status: 500,
 			body: {

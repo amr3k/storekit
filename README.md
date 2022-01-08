@@ -17,6 +17,8 @@ A next generation E-Commerce theme built with SvelteKit.
 - Always keep an eye on monthly changelog, as sveltekit is still in beta.
   > One example for this is in commit (63737b89b3881f891c68513189361a485e5c9ab2) When I found that `$page.path` was replaced with `$page.url.pathname`
 - Always check `<slot />` in layouts and children components.
+- The function `get` from `svete/store` will return `false` if the store is an empty array, So you should validate it with `if (!get(store)) ...`.
+- If you found a bug, it's better to use incognito mode to ignore cache & localStorage.
 
 ## Typescript (&Javascript)
 
