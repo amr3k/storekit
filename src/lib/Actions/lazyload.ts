@@ -1,6 +1,6 @@
 // Source: https://jovianmoon.io/blog/lazy-loading-images-in-svelte-kit-with-actions
 // See how the options work here: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-let options = {
+const options = {
 	root: null,
 	rootMargin: '0px',
 	threshold: 0
