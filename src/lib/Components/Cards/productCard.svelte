@@ -9,10 +9,10 @@
 	class="group w-full bg-base-200 rounded-lg flex flex-col items-center overflow-hidden hover:shadow-lg border border-gray-100"
 >
 	<a sveltekit:prefetch href="/product/{product.slug}" class="w-full h-full relative">
-		<Image classes="object-cover" src={product.images[0].src} alt={product.images[0].alt} />
+		<Image classes="object-contain" source={product.images[0].src} alt={product.images[0].alt} />
 		<Image
-			classes="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 duration-200"
-			src={product.images[1].src}
+			classes="object-contain absolute inset-0 opacity-0 group-hover:opacity-100 duration-200"
+			source={product.images[1].src}
 			alt={product.images[1].alt}
 		/>
 	</a>
