@@ -64,6 +64,7 @@
 	export let category: string;
 	export let pageNumber: number; // For pagination
 	export let products: Product[];
+	console.log(products[8]);
 </script>
 
 <svelte:head>
