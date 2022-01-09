@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import { preloadImage } from '$lib/Actions/preloadImage';
 	import type { Product } from '$lib/Types/Data/product.types';
 	export let product: Product;
@@ -6,9 +7,10 @@
 </script>
 
 {#await preloadImage(product.images[0].src)}
-	<div class="w-full h-full bg-base-300 animate-pulse rounded-lg border border-gray-100" />
+	<div class="w-full h-full aspect-[2/3] bg-base-300 animate-pulse rounded-lg border border-gray-100" />
 {:then base64}
 	<div
+		in:fade={{ duration: 500 }}
 		class="group w-full bg-base-200 rounded-lg flex flex-col items-center overflow-hidden hover:shadow-lg border border-gray-100"
 	>
 		<a sveltekit:prefetch href="/product/{product.slug}" class="w-full h-full relative">
