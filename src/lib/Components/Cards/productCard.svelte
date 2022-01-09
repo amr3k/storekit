@@ -5,6 +5,8 @@
 	import type { Product } from '$lib/Types/Data/product.types';
 	import { roundPrice } from '$lib/Functions/roundPrice';
 	export let product: Product;
+	const isVariableProduct = product.type === 'variable';
+
 	const productInStock = product.stock_status === 'instock';
 	// console.log(product);
 </script>
@@ -26,25 +28,38 @@
 				alt={product.images[1].alt}
 			/>
 		</a>
-		<!-- {#if product.on_sale} -->
-		<div
-			class="absolute bg-red-500 text-white select-none px-2 py-1 top-0 {$languageStore === 'en'
-				? 'right-0 rounded-tr-lg rounded-bl-lg'
-				: 'left-0 rounded-tl-lg rounded-br-lg'}"
-		>
-			Sale
-		</div>
-		<!-- {/if} -->
-		<div class="p-2">
-			<h3 class="font-medium text-lg truncate">
+		{#if product.on_sale}
+			<div
+				class="absolute bg-red-500 text-white select-none px-2 py-1 top-0 {$languageStore === 'en'
+					? 'right-0 rounded-tr-lg rounded-bl-lg'
+					: 'left-0 rounded-tl-lg rounded-br-lg'}"
+			>
+				Sale
+			</div>
+		{/if}
+		<div class="p-2 flex justify-between">
+			<h3 class="font-bold text-sm truncate w-full">
 				<a href="/product/{product.slug}" title={product.name}>
 					{product.name}
 				</a>
 			</h3>
-			<p class="">{roundPrice(parseFloat(product.price))}</p>
-			<!-- <p class="">{product.regular_price}</p>
-			<p class="">{product.sale_price}</p> -->
-			<!-- <p>{product.stock_quantity}</p> -->
 		</div>
+		<p class="text-md font-semibold flex justify-end">
+			<style>
+				/*
+				I had to write this in plain CSS 
+				because postCSS complains about missing `del` tag
+				which is not visible ofc, but it does exist in `product.price_html`
+				*/
+				del {
+					display: flex;
+					justify-items: center;
+					font-size: 10px;
+					color: gray;
+					margin: auto 4px;
+				}
+			</style>
+			{@html product.price_html}
+		</p>
 	</div>
 {/await}
