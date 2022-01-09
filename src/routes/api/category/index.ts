@@ -12,7 +12,7 @@ export async function post(req: Request) {
 		const pageID: number = jsonBody.pageNumber;
 		const _url =
 			import.meta.env.VITE_WOO_ENDPOINT +
-			`/products?category=${categories.join(',')}&per_page=10&page=${pageID}`;
+			`/products?category=${categories.join(',')}&per_page=12&page=${pageID}`;
 		const res: Response = await fetch(_url, {
 			method: 'GET',
 			headers: {
