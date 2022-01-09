@@ -37,4 +37,33 @@
 	h6 {
 		font-family: 'Cairo', sans-serif;
 	}
+	/* Custom Scrollbar */
+	/* Firefox */
+	/* Looks like firefox doesn't support color gradient for scrollbar. */
+	* {
+		scrollbar-width: auto;
+		scrollbar-color: rgba(255, 105, 152, 1) transparent;
+	}
+
+	/* Chrome, Edge, Safari */
+	*::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+
+	*::-webkit-scrollbar-track {
+		background: rgb(255, 219, 247);
+		background: radial-gradient(circle, rgba(255, 219, 247, 1) 0%, rgba(255, 216, 228, 1) 100%);
+	}
+
+	*::-webkit-scrollbar-thumb {
+		background: rgb(255, 105, 152);
+		background: radial-gradient(circle, rgba(255, 105, 152, 1) 0%, rgba(255, 111, 224, 1) 100%);
+		border-radius: 6px;
+	}
+
+	*::-webkit-scrollbar-thumb:hover {
+		background: rgb(255, 56, 118);
+		background: radial-gradient(circle, rgba(255, 56, 118, 1) 0%, rgba(255, 54, 212, 1) 100%);
+	}
 </style>
