@@ -12,7 +12,12 @@
 	<div class="mr-1 rounded-full bg-base-300 animate-pulse w-6 h-6" />
 {:then backgroundColor}
 	<div
+		title={colorName}
 		style="background-color: {backgroundColor};"
-		class="mr-1 rounded-full w-6 h-6 border-base-100"
-	/>
+		class="mr-1 rounded-full w-6 h-6 flex justify-center items-center"
+	>
+		<div
+			class="w-5 h-5 rounded-full border-2 border-transparent hover:border-base-200 duration-200 ease-linear"
+		/>
+	</div>
 {/await}
