@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import { categoriesStore } from '$lib/Stores/Data/categories';
 
-	import { CategoryID } from '$lib/Types/Data/category.types';
 	import type { Product } from '$lib/Types/Data/product.types';
 	import { get as getStoreValue } from 'svelte/store';
 
@@ -59,12 +58,12 @@
 </script>
 
 <script lang="ts">
-	import ProductCard from '$lib/Components/Cards/productCard.svelte';
+	import ProductCard from '$lib/Components/Product/productCard.svelte';
 
 	export let category: string;
 	export let pageNumber: number; // For pagination
 	export let products: Product[];
-	console.log(products[8]);
+	// console.log(products[1]);
 </script>
 
 <svelte:head>
@@ -73,7 +72,7 @@
 
 <h1 class="text-4xl text-center">{category}</h1>
 <div
-	class="px-4 grid gap-4 justify-items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-3/4"
+	class="px-4 grid gap-4 justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
 >
 	{#each products as product}
 		<ProductCard {product} />
