@@ -36,6 +36,22 @@
 					src={product.images[1].src}
 					alt={product.images[1].alt}
 				/>
+				<div
+					class="absolute h-full w-full inset-0 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-end duration-200 ease-linear"
+				>
+					<!-- TODO Insert add to cart endpoint -->
+					<a
+						href="/product/{product.slug}"
+						class="w-3/4 group flex justify-between items-center hover:text-secondary hover:fill-secondary rounded-lg m-12 p-4 bg-white/70 backdrop-blur-xl shadow-xl duration-200"
+					>
+						<h2 class="text-xl font-extrabold">Quick add to cart</h2>
+						<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+							><path fill="none" d="M0 0h24v24H0V0z" /><path
+								d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8.9-5h7.5a2 2 0 0 0 1.7-1l3.9-7-1.8-1-3.8 7h-7L4.2 2H1v2h2l3.6 7.6L5.2 14A2 2 0 0 0 7 17h12v-2H7l1.1-2z"
+							/></svg
+						>
+					</a>
+				</div>
 			{/if}
 		</a>
 		{#if product.on_sale && productInStock}
@@ -61,7 +77,7 @@
 			</a>
 		{/if}
 		<div class="p-2 flex justify-between">
-			<h3 class="font-bold text-sm truncate w-full">
+			<h3 class="font-bold text-md truncate w-full">
 				<a href="/product/{product.slug}" title={product.name}>
 					{product.name}
 				</a>
@@ -96,6 +112,7 @@
 		{:else}
 			<div class="flex justify-between items-center">
 				<div class="flex ml-3" />
+				<!-- Show empty string to preserve spacing -->
 				<p class="text-md font-semibold flex justify-end m-2">&#917536;</p>
 			</div>
 		{/if}
