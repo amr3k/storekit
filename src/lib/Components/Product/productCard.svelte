@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { preloadImage } from '$lib/Functions/preloadImage';
-	import { language as languageStore } from '$lib/Stores/language';
 	import type { Product } from '$lib/Types/Data/product.types';
 	import ColorVariation from './colorVariation.svelte';
 	export let product: Product;
@@ -56,9 +55,7 @@
 		</a>
 		{#if product.on_sale && productInStock}
 			<div
-				class="absolute bg-red-500 text-white select-none px-2 py-1 top-0 {$languageStore === 'en'
-					? 'right-0 rounded-tr-lg rounded-bl-lg'
-					: 'left-0 rounded-tl-lg rounded-br-lg'}"
+				class="absolute bg-red-500 text-white select-none px-2 py-1 top-0 ltr:right-0 ltr:rounded-tr-lg ltr:rounded-bl-lg rtl:left-0 rtl:rounded-tl-lg rtl:rounded-br-lg"
 			>
 				Sale
 			</div>
