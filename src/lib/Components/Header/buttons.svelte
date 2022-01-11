@@ -77,7 +77,7 @@
 	>
 		{#if cart.length > 0}
 			<div class="relative">
-				<div class="w-2 h-2 absolute -top-1 -right-1 bg-primary rounded-full" />
+				<div class="w-2 h-2 absolute -top-1 -right-1 bg-primary rounded-full animate-ping" />
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
