@@ -71,4 +71,11 @@
 		background: rgb(255, 56, 118);
 		background: radial-gradient(circle, rgba(255, 56, 118, 1) 0%, rgba(255, 54, 212, 1) 100%);
 	}
+	/* Gradient border colors (using background for a relative element)*/
+	.gradient-border {
+		@apply bg-gradient-to-br from-lime-200 via-fuchsia-400 to-blue-600;
+	}
+	html[dir='rtl'] .gradient-border {
+		@apply bg-gradient-to-bl;
+	}
 </style>
