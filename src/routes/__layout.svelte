@@ -20,6 +20,11 @@
 	html {
 		@apply antialiased;
 	}
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
 	::selection {
 		@apply bg-neutral text-neutral-content;
 	}
