@@ -4,12 +4,21 @@
 	import type { Product } from '$lib/Types/Data/product.types';
 	import ColorVariation from './colorVariation.svelte';
 	export let product: Product;
-	const productInStock = product.stock_status === 'instock';
+	const productIsAvailable = product.stock_status === 'instock' && product.status === 'publish';
 	let productColors: string[] = [];
+	let productColorSelection: string;
 	product.attributes.forEach((attribute) => {
 		if (attribute.name.match(/color/i)) {
-			// console.log(attribute.options);
 			productColors = attribute.options;
+		}
+	});
+	productColorSelection = productColors[0];
+	$: console.log(productColorSelection);
+
+	let productSizes: string[] = [];
+	product.attributes.forEach((attribute) => {
+		if (attribute.name.match(/size/i)) {
+			productSizes = attribute.options;
 		}
 	});
 </script>
@@ -25,11 +34,12 @@
 	>
 		<a sveltekit:prefetch href="/product/{product.slug}" class="w-full h-full relative">
 			<img
-				class="object-cover w-full h-full {productInStock || 'opacity-40'}"
+				class="object-cover w-full h-full {productIsAvailable || 'opacity-40'}"
 				src={base64}
 				alt={product.images[0].alt}
 			/>
-			{#if productInStock}
+			{#if productIsAvailable}
+				<!-- Product images -->
 				<img
 					class="object-cover w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 duration-200"
 					src={product.images[1].src}
@@ -41,50 +51,55 @@
 					<!-- TODO Insert add to cart endpoint -->
 					<a
 						href="/product/{product.slug}"
-						class="w-3/4 group flex justify-between items-center hover:text-secondary hover:fill-secondary rounded-lg m-12 p-4 bg-white/70 backdrop-blur-xl shadow-xl duration-200"
+						class="w-3/4 group flex justify-between items-center hover:text-secondary hover:fill-secondary rounded-lg m-12 p-4 backdrop-blur-xl bg-white/70 shadow-xl"
 					>
 						<h2 class="text-xl font-extrabold">Quick add to cart</h2>
-						<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-							><path fill="none" d="M0 0h24v24H0V0z" /><path
+						<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path fill="none" d="M0 0h24v24H0V0z" />
+							<path
 								d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8.9-5h7.5a2 2 0 0 0 1.7-1l3.9-7-1.8-1-3.8 7h-7L4.2 2H1v2h2l3.6 7.6L5.2 14A2 2 0 0 0 7 17h12v-2H7l1.1-2z"
-							/></svg
-						>
+							/>
+						</svg>
 					</a>
 				</div>
 			{/if}
 		</a>
-		{#if product.on_sale && productInStock}
+		{#if product.on_sale && productIsAvailable}
+			<!-- Show sale badge -->
 			<div
 				class="absolute bg-red-500 text-white select-none px-2 py-1 top-0 ltr:right-0 ltr:rounded-tr-lg ltr:rounded-bl-lg rtl:left-0 rtl:rounded-tl-lg rtl:rounded-br-lg"
 			>
 				Sale
 			</div>
+			<!-- Show sale badge -->
 		{/if}
-		{#if !productInStock}
+		{#if !productIsAvailable}
+			<!-- Show Out of stock badge -->
 			<a href="/product/{product.slug}">
 				<div class="absolute inset-0 w-full h-full flex items-center justify-center select-none">
 					<div class="w-full h-20 flex items-center justify-center backdrop-blur-xl">
 						<h1
-							class="text-4xl uppercase bg-clip-text text-transparent bg-gradient-to-br from-red-600 to-orange-800 border-t-4 border-b-4 border-red-500  font-black"
+							class="text-4xl uppercase bg-clip-text text-transparent bg-gradient-to-br from-red-600 to-orange-800 border-t-4 border-b-4 border-red-500 font-black"
 						>
 							Out of stock
 						</h1>
 					</div>
 				</div>
 			</a>
+			<!-- Show Out of stock badge -->
 		{/if}
 		<div class="p-2 flex justify-between">
-			<h3 class="font-bold text-md truncate w-full">
+			<h3 class:text-gray-500={!productIsAvailable} class="font-bold text-md truncate w-full">
 				<a href="/product/{product.slug}" title={product.name}>
 					{product.name}
 				</a>
 			</h3>
 		</div>
-		{#if productInStock}
+		{#if productIsAvailable}
 			<div class="flex justify-between items-center">
 				<div class="flex ml-3">
-					{#each productColors as productColor}
-						<ColorVariation colorName={productColor} />
+					{#each productColors as color}
+						<ColorVariation colorName={color} bind:choice={productColorSelection} />
 					{/each}
 				</div>
 				<p class="text-md font-semibold flex justify-end m-2">
