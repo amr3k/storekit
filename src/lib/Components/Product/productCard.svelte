@@ -21,13 +21,14 @@
 			productSizes = attribute.options;
 		}
 	});
+	let productInWishlist = false;
 </script>
 
 {#await preloadImage(product.images[0].src)}
 	<div
 		class="w-full h-full aspect-[2/3] bg-base-300 animate-pulse rounded-lg border border-gray-100"
 	/>
-{:then base64}
+{:then imageAsBase64}
 	<div
 		in:fade={{ duration: 500 }}
 		class="group w-full bg-base-200 relative rounded-lg flex flex-col overflow-hidden shadow-lg border border-gray-100"
@@ -35,25 +36,31 @@
 		<a sveltekit:prefetch href="/product/{product.slug}" class="w-full h-full relative">
 			<img
 				class="object-cover w-full h-full {productIsAvailable || 'opacity-40'}"
-				src={base64}
+				src={imageAsBase64}
 				alt={product.images[0].alt}
 			/>
 			{#if productIsAvailable}
 				<!-- Product images -->
 				<img
-					class="object-cover w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 duration-200"
+					class="object-cover w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 duration-500"
 					src={product.images[1].src}
 					alt={product.images[1].alt}
 				/>
 				<div
-					class="absolute h-full w-full inset-0 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-end duration-200 ease-linear"
+					class="absolute h-full w-full inset-0 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-end duration-200 ease-linear product-blurred-menu"
 				>
+					<button class="hover:text-secondary hover:fill-secondary">
+						<!-- TODO Implement a function to open a window with product info -->
+						<h2 class="text-xl font-extrabold">Quick view</h2>
+						<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+							><path fill="none" d="M0 0h24v24H0z" /><path
+								d="M21 11V3h-8l3 3L6 16l-3-3v8h8l-3-3L18 8z"
+							/></svg
+						>
+					</button>
 					<!-- TODO Insert add to cart endpoint -->
-					<a
-						href="/product/{product.slug}"
-						class="w-3/4 group flex justify-between items-center hover:text-secondary hover:fill-secondary rounded-lg m-12 p-4 backdrop-blur-xl bg-white/70 shadow-xl"
-					>
-						<h2 class="text-xl font-extrabold">Quick add to cart</h2>
+					<a href="/product/{product.slug}" class="hover:text-secondary hover:fill-secondary">
+						<h2 class="text-xl font-extrabold">Add to cart</h2>
 						<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path fill="none" d="M0 0h24v24H0V0z" />
 							<path
@@ -128,5 +135,46 @@
 				<p class="text-md font-semibold flex justify-end m-2">&#917536;</p>
 			</div>
 		{/if}
+		<button
+			class="absolute p-2 fill-gray-700 hover:fill-red-500 select-none top-4 ltr:left-4 rtl:right-4 rounded-xl backdrop-blur-md bg-gradient-to-b from-white/70 to-gray-50/70 shadow-md hover:bg-white/90 hover:shadow-lg hover:scale-110 duration-100 wishlist-button"
+		>
+			<!-- TODO Insert add to wishlist function -->
+			<div class="relative flex">
+				{#if productInWishlist}
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path fill="none" d="M0 0h24v24H0z" />
+						<path d="M12 4.5a6 6 0 0 1 8.5 8.5L12 21.5 3.5 13A6 6 0 0 1 12 4.5z" />
+					</svg>
+					<h3 class="">Remove from wishlist</h3>
+				{:else}
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path fill="none" d="M0 0h24v24H0z" />
+						<path
+							d="M19 14v3h3v2h-3v3h-2v-3h-3v-2h3v-3h2zm1.24-9.24a6 6 0 0 1 .24 8.23l-1.42-1.42a4 4 0 0 0-5.72-5.56L12 7.22l-1.33-1.2a4 4 0 0 0-5.69 5.61l8.43 8.45-1.41 1.4L3.52 13A6 6 0 0 1 12 4.53a6 6 0 0 1 8.24.23z"
+						/>
+					</svg>
+					<h3>Add to wishlist</h3>
+				{/if}
+			</div>
+		</button>
 	</div>
 {/await}
+
+<style lang="postcss">
+	.product-blurred-menu > button,
+	.product-blurred-menu > a {
+		@apply w-3/4 flex justify-between items-center rounded-lg p-4 backdrop-blur-xl bg-white/70 shadow-xl mb-2;
+	}
+	.wishlist-button svg {
+		@apply w-7 h-7;
+	}
+	.wishlist-button:hover svg {
+		@apply scale-110;
+	}
+	.wishlist-button h3 {
+		@apply w-0 whitespace-nowrap invisible;
+	}
+	.wishlist-button:hover h3 {
+		@apply w-full visible;
+	}
+</style>
