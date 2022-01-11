@@ -73,7 +73,7 @@
 	}
 	/* Gradient border colors (using background for a relative element)*/
 	.gradient-border {
-		@apply bg-gradient-to-br from-lime-200 via-fuchsia-400 to-blue-600;
+		@apply bg-gradient-to-br from-rose-300 via-pink-400 to-fuchsia-500;
 	}
 	html[dir='rtl'] .gradient-border {
 		@apply bg-gradient-to-bl;
