@@ -5,9 +5,9 @@ export const preloadImage = async (source: string): Promise<string> => {
 	 * @param {string} source - image source
 	 * @returns {Promise<string>} - base64 image
 	 */
-	let res: Response = await fetch(source);
-	let blob: Blob = await res.blob();
-	let reader: FileReader = new FileReader();
+	const res: Response = await fetch(source);
+	const blob: Blob = await res.blob();
+	const reader: FileReader = new FileReader();
 	return new Promise(function (resolve) {
 		reader.readAsDataURL(blob);
 		reader.onload = () => resolve(reader.result);
