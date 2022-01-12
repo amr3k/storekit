@@ -67,7 +67,7 @@
 
 <svelte:window on:keydown={escapeClick} />
 
-<header class="shadow-lg bg-base-200 drawer min-h-screen">
+<div class="shadow-lg bg-base-200 drawer min-h-screen">
 	<input
 		id="main-drawer"
 		type="checkbox"
@@ -137,4 +137,4 @@
 		<Footer />
 	</div>
 	<Sidebar />
-</header>
+</div>
