@@ -65,8 +65,6 @@
 	export let category: Category;
 	export let pageNumber: number; // For pagination
 	let breadCrumbs: Category[] = getCategoryAncestors(category);
-	console.log(breadCrumbs);
-
 	let productsPerPage: number = 12; // Number of products per page
 	const totalPages: number = Math.ceil(category.count / productsPerPage); // Total number of pages
 	export let products: Product[];
@@ -77,6 +75,13 @@
 </svelte:head>
 
 <h1 class="text-4xl text-center">{category.name}</h1>
+<div class="flex px-2 breadcrumbs">
+	<a href="/">Home</a>
+	{#each breadCrumbs as category}
+		<span class="mx-1 text-gray-600">&#9679</span>
+		<a href="/category/{category.slug}">{category.name}</a>
+	{/each}
+</div>
 <div
 	class="px-4 grid gap-4 justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
 >
@@ -86,3 +91,9 @@
 </div>
 
 <h1>This is page: {pageNumber} of {totalPages}</h1>
+
+<style lang="postcss">
+	.breadcrumbs a {
+		@apply inline-block font-semibold text-primary;
+	}
+</style>
