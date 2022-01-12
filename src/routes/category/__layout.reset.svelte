@@ -32,7 +32,7 @@
 
 <Header>
 	<CategorySidebar>
-		<main class="min-h-full">
+		<main>
 			<slot />
 		</main>
 	</CategorySidebar>

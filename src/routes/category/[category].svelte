@@ -31,7 +31,8 @@
 		}
 
 		// Get page number from query parameters
-		const pageNumber = parseInt(url.searchParams.get('page')) || 1;
+		let pageNumber = parseInt(url.searchParams.get('page')) || 1;
+		pageNumber = pageNumber > 0 ? pageNumber : 1;
 
 		// Get products of the current category
 		const res: Response = await fetch('/api/category', {
@@ -47,7 +48,7 @@
 				status: 200,
 				props: {
 					category: matchCategory,
-					pageNumber,
+					currentPageNumber: pageNumber,
 					products
 				}
 			};
@@ -63,10 +64,13 @@
 	import ProductCard from '$lib/Components/Product/productCard.svelte';
 	import { getCategoryAncestors } from '$lib/Functions/getCategoryAncestors';
 	export let category: Category;
-	export let pageNumber: number; // For pagination
 	let breadCrumbs: Category[] = getCategoryAncestors(category);
-	let productsPerPage: number = 12; // Number of products per page
-	const totalPages: number = Math.ceil(category.count / productsPerPage); // Total number of pages
+
+	// Pagination
+	export let currentPageNumber: number;
+	let productsPerPage = 12;
+	const totalPages: number = Math.ceil(category.count / productsPerPage);
+
 	export let products: Product[];
 </script>
 
@@ -90,10 +94,45 @@
 	{/each}
 </div>
 
-<h1>This is page: {pageNumber} of {totalPages}</h1>
+{#if totalPages > 1}
+	<div class="flex justify-center my-10 text-primary pagination">
+		<a
+			sveltekit:prefetch
+			href="/category/{category.slug}?page={currentPageNumber - 1}"
+			class="ltr:rounded-l-full rtl:rounded-r-full {currentPageNumber === 1
+				? 'disabled'
+				: 'bg-gradient-to-b from-blue-50 to-blue-100'}">Previous</a
+		>
+		{#each [...Array(totalPages + 1).keys()].slice(1) as currentPage}
+			<a
+				sveltekit:prefetch
+				href="/category/{category.slug}?page={currentPage}"
+				class="border-x border-gray-200 {currentPage === currentPageNumber
+					? 'bg-gradient-to-b from-sky-600 to-sky-700 font-semibold text-primary-content'
+					: 'bg-gradient-to-b from-blue-50 to-blue-100'}">{currentPage}</a
+			>
+		{/each}
+		<a
+			sveltekit:prefetch
+			href="/category/{category.slug}?page={currentPageNumber + 1}"
+			class="ltr:rounded-r-full rtl:rounded-l-full {currentPageNumber === totalPages
+				? 'disabled'
+				: 'bg-gradient-to-b from-blue-50 to-blue-100'}">Next</a
+		>
+	</div>
+{/if}
 
 <style lang="postcss">
 	.breadcrumbs a {
-		@apply inline-block font-semibold text-primary;
+		@apply font-semibold text-primary;
+	}
+	.pagination > a {
+		@apply px-4 py-2 duration-100 ease-in-out shadow-md;
+	}
+	.pagination > a:hover {
+		@apply from-blue-800 to-blue-900 text-blue-50;
+	}
+	.pagination > a.disabled {
+		@apply bg-gray-300 text-gray-400 cursor-not-allowed pointer-events-none;
 	}
 </style>

@@ -23,7 +23,7 @@
 	});
 	let productInWishlist = false;
 	// This variable indicates a user has clicked Add to cart while the product has multiple sizes
-	let showAvailableSizes: boolean = false;
+	let showAvailableSizes = false;
 </script>
 
 {#await preloadImage(product.images[0].src)}
