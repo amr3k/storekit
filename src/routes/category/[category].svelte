@@ -1,24 +1,26 @@
 <script context="module" lang="ts">
 	import { categoriesStore } from '$lib/Stores/Data/categories';
 
+	import type { Category } from '$lib/Types/Data/category.types';
 	import type { Product } from '$lib/Types/Data/product.types';
 	import { get as getStoreValue } from 'svelte/store';
 
 	export async function load({ url, params, fetch }) {
 		// Initialize empty array of category IDs
-		let categoriesIDs: number[] = [];
+		let matchCategory: Category;
 
 		/**
 		 * Filter the categoriesStore for the categories that
 		 * includes the current category name in their slug
 		 * and add their ID to the categoriesIDs array
 		 */
-		getStoreValue(categoriesStore)
-			.filter((c) => c.slug.includes(params.category))
-			.forEach((c) => {
-				categoriesIDs.push(c.id);
-			});
-		if (categoriesIDs.length === 0) {
+		getStoreValue(categoriesStore).forEach((sc) => {
+			// sc = stored category
+			if (sc.slug.includes(params.category)) {
+				matchCategory = sc;
+			}
+		});
+		if (!matchCategory) {
 			// If no categories were found, return 404
 			return {
 				status: 404,
@@ -35,7 +37,7 @@
 		const res: Response = await fetch('/api/category', {
 			method: 'POST',
 			body: JSON.stringify({
-				categories: categoriesIDs,
+				categories: [matchCategory.id],
 				pageNumber: pageNumber
 			})
 		});
@@ -44,7 +46,7 @@
 			return {
 				status: 200,
 				props: {
-					category: params.category,
+					category: matchCategory,
 					pageNumber,
 					products
 				}
@@ -59,18 +61,22 @@
 
 <script lang="ts">
 	import ProductCard from '$lib/Components/Product/productCard.svelte';
-
-	export let category: string;
+	import { getCategoryAncestors } from '$lib/Functions/getCategoryAncestors';
+	export let category: Category;
 	export let pageNumber: number; // For pagination
+	let breadCrumbs: Category[] = getCategoryAncestors(category);
+	console.log(breadCrumbs);
+
+	let productsPerPage: number = 12; // Number of products per page
+	const totalPages: number = Math.ceil(category.count / productsPerPage); // Total number of pages
 	export let products: Product[];
-	// console.log(products[1]);
 </script>
 
 <svelte:head>
-	<title>Shop the best collection of {category}</title>
+	<title>Shop the best collection of {category.name}</title>
 </svelte:head>
 
-<h1 class="text-4xl text-center">{category}</h1>
+<h1 class="text-4xl text-center">{category.name}</h1>
 <div
 	class="px-4 grid gap-4 justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
 >
@@ -79,4 +85,4 @@
 	{/each}
 </div>
 
-<h1>This is page: {pageNumber}</h1>
+<h1>This is page: {pageNumber} of {totalPages}</h1>
