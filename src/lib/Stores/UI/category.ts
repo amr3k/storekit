@@ -5,13 +5,13 @@ import type { categoryPreferencesType } from '$lib/Types/ui.types';
 import { sortBy } from '$lib/Types/Data/category.types';
 
 let categoryPreferencesStore: Writable<categoryPreferencesType> = writable({
-	productsPerPage: 12,
+	productsPerPage: '12',
 	sortBy: sortBy.date
 });
 try {
 	categoryPreferencesStore = writable(
 		(browser && JSON.parse(localStorage.getItem('categoryPreferences'))) || {
-			productsPerPage: 12,
+			productsPerPage: '12',
 			sortBy: 'date'
 		}
 	);
