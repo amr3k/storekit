@@ -19,7 +19,7 @@
 			sveltekit:prefetch
 			href="/category/{category.slug}?page={currentPage}"
 			class="border-x border-gray-200 {currentPage === currentPageNumber
-				? 'bg-gradient-to-b from-sky-600 to-sky-700 font-semibold text-primary-content'
+				? 'bg-gradient-to-b from-sky-600 to-sky-700 font-semibold text-primary-content pointer-events-none cursor-pointer'
 				: 'bg-gradient-to-b from-blue-50 to-blue-100'}">{currentPage}</a
 		>
 	{/each}
@@ -40,6 +40,6 @@
 		@apply from-blue-800 to-blue-900 text-blue-50;
 	}
 	.pagination > a.disabled {
-		@apply bg-gray-300 text-gray-400 cursor-not-allowed pointer-events-none;
+		@apply bg-gradient-to-b from-gray-300 to-gray-200 text-gray-500 shadow-none cursor-not-allowed pointer-events-none;
 	}
 </style>
