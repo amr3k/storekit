@@ -74,18 +74,17 @@
 
 	// Pagination
 	export let currentPageNumber: number;
-	let productsPerPage = 12;
-	$: totalPages = Math.ceil(category.count / productsPerPage);
+	$: totalPages = Math.ceil(category.count / parseInt($categoryPreferencesStore.productsPerPage));
 
 	export let products: Product[];
 
-	$: updateProducts = async () => {
+	const updateProducts = async () => {
 		const res: Response = await fetch('/api/category', {
 			method: 'POST',
 			body: JSON.stringify({
 				categories: [category.id],
 				pageNumber: 1,
-				perPage: productsPerPage
+				perPage: $categoryPreferencesStore.productsPerPage
 			})
 		});
 		if (res.status === 200) {
@@ -99,7 +98,7 @@
 </svelte:head>
 
 <h1 class="text-4xl text-center">{category.name}</h1>
-<div class="flex justify-around pb-6">
+<div class="flex items-center justify-around pb-6 px-4">
 	<div class="flex px-2 breadcrumbs w-full">
 		<a href="/">Home</a>
 		{#each breadCrumbs as category}
@@ -107,7 +106,7 @@
 			<a href="/category/{category.slug}">{category.name}</a>
 		{/each}
 	</div>
-	<select bind:value={productsPerPage} class="select select-bordered">
+	<select bind:value={$categoryPreferencesStore.productsPerPage} class="select select-bordered">
 		<option value="12">12</option>
 		<option value="24">24</option>
 		<option value="48">48</option>
