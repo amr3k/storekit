@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import { closeAll as closeAllHeaderMenus } from '$lib/Stores/UI/headerMenus';
-	import type { Pages } from '$lib/Types/UI/header.types';
+	import type { headerPages } from '$lib/Types/ui.types';
 
-	let pages: Pages = getContext('pages');
+	let pages: headerPages = getContext('pages');
 
 	const closeSideBar = (): void => closeAllHeaderMenus();
 </script>

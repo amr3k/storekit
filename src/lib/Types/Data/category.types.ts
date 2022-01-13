@@ -1,3 +1,11 @@
+export enum sortBy {
+	'date',
+	'id',
+	'include',
+	'title',
+	'slug'
+}
+
 export type ShortCategory = {
 	id: number;
 	name: string;
