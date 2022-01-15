@@ -20,6 +20,18 @@ A next generation E-Commerce theme built with SvelteKit.
 - The function `get` from `svete/store` will return `false` if the store is an empty array, So you should validate it with `if (!get(store)) ...`.
 - If you found a bug, it's better to use incognito mode to ignore cache & localStorage.
 
+### i18n
+
+- Useful libraries:
+  - [Typesafe i18n](https://github.com/ivanhofer/typesafe-i18n) (⭐+720)
+    > An opinionated, fully type-safe, lightweight localization library for TypeScript and JavaScript projects with no external dependencies.
+  - [svelte-i18n](https://github.com/kaisermann/svelte-i18n) (⭐+660)
+    > Internationalization library for Svelte
+  - [svelte-intl-precompiled](https://github.com/cibernox/svelte-intl-precompile) (⭐+180)
+    > I18n library for Svelte.js that analyzes your keys at build time for max performance and minimal footprint.
+  - 🔥 [sveltekit-i18n](https://github.com/jarda-svoboda/sveltekit-i18n) (⭐+30)
+    > Internationalization library built for SvelteKit
+
 ## Typescript (&Javascript)
 
 > What a discovery!
