@@ -78,4 +78,27 @@
 	html[dir='rtl'] .gradient-border {
 		@apply bg-gradient-to-bl;
 	}
+	.animate-shine {
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0) 0%,
+			rgba(255, 255, 255, 0) 45%,
+			rgba(255, 255, 255, 0.2) 50%,
+			rgba(255, 255, 255, 0) 55%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background-size: 1000%;
+		background-position: right;
+		animation: shine 3s linear infinite;
+	}
+	.animate-shine-text {
+		@apply text-transparent bg-clip-text bg-gradient-to-r from-transparent via-white/50 to-transparent bg-no-repeat;
+		background-size: 1000%;
+		animation: shine 3s infinite;
+	}
+	@keyframes shine {
+		to {
+			background-position: left;
+		}
+	}
 </style>

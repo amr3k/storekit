@@ -76,9 +76,9 @@
 		{#if product.on_sale && isProductAvailable}
 			<!-- Show sale badge -->
 			<div
-				class="absolute bg-red-500 text-white select-none px-2 py-1 top-0 ltr:right-0 ltr:rounded-tr-lg ltr:rounded-bl-lg rtl:left-0 rtl:rounded-tl-lg rtl:rounded-br-lg"
+				class="absolute bg-red-500 text-white select-none top-0 ltr:right-0 ltr:rounded-tr-lg ltr:rounded-bl-lg rtl:left-0 rtl:rounded-tl-lg rtl:rounded-br-lg"
 			>
-				Sale
+				<div class="w-full h-full px-2 py-1 animate-shine">Sale</div>
 			</div>
 			<!-- Show sale badge -->
 		{/if}
@@ -145,7 +145,7 @@
 			class="absolute p-2 fill-gray-700 hover:fill-red-500 select-none top-4 ltr:left-4 rtl:right-4 rounded-xl backdrop-blur-md bg-gradient-to-b from-white/70 to-gray-50/70 shadow-md hover:bg-white/90 hover:shadow-lg hover:scale-110 duration-100 wishlist-button"
 		>
 			<!-- TODO Insert add to wishlist function -->
-			<div class="relative flex">
+			<div class="flex">
 				{#if productInWishlist}
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 						<path fill="none" d="M0 0h24v24H0z" />
