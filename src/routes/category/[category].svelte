@@ -70,7 +70,7 @@
 	import { getCategoryAncestors } from '$lib/Functions/getCategoryAncestors';
 	import type { categoryPreferencesType } from '$lib/Types/ui.types';
 	export let category: Category;
-	let breadCrumbs: Category[] = getCategoryAncestors(category);
+	let breadCrumbs: Category[] = getCategoryAncestors(category).reverse();
 
 	// Pagination
 	export let currentPageNumber: number;
@@ -97,9 +97,10 @@
 	<title>Shop the best collection of {category.name}</title>
 </svelte:head>
 
-<h1 class="text-4xl text-center">{category.name}</h1>
+<h1 class="text-4xl font-bold text-center animate-shine-text">{category.name}</h1>
 <div class="flex items-center justify-around pb-6 px-4">
 	<div class="flex px-2 breadcrumbs w-full">
+		<!-- Breadcrumbs -->
 		<a href="/">Home</a>
 		{#each breadCrumbs as category}
 			<span class="mx-1 text-gray-600">&#9679</span>

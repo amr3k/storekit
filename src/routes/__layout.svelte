@@ -27,6 +27,8 @@
 	}
 	::selection {
 		@apply bg-neutral text-neutral-content;
+		text-fill-color: white;
+		-webkit-text-fill-color: white;
 	}
 	html,
 	body {
@@ -81,24 +83,52 @@
 	.animate-shine {
 		background: linear-gradient(
 			135deg,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(255, 255, 255, 0) 45%,
+			transparent 0%,
+			transparent 45%,
 			rgba(255, 255, 255, 0.2) 50%,
-			rgba(255, 255, 255, 0) 55%,
-			rgba(255, 255, 255, 0) 100%
+			transparent 55%,
+			transparent 100%
 		);
 		background-size: 1000%;
 		background-position: right;
 		animation: shine 3s linear infinite;
 	}
 	.animate-shine-text {
-		@apply text-transparent bg-clip-text bg-gradient-to-r from-transparent via-white/50 to-transparent bg-no-repeat;
-		background-size: 1000%;
-		animation: shine 3s infinite;
+		color: white;
+		background: linear-gradient(
+			45deg,
+			#ee4242,
+			#e49936,
+			#e2f729,
+			#28e328,
+			#28e39b,
+			#22f4fc,
+			#422feb,
+			#7f28e3,
+			#ee28d4,
+			#ec215e
+		);
+		background-size: 1600% 1600%;
+		background-clip: text;
+		text-fill-color: transparent;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: text-gradient 90s ease infinite;
 	}
 	@keyframes shine {
 		to {
 			background-position: left;
+		}
+	}
+	@keyframes text-gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
 		}
 	}
 </style>
