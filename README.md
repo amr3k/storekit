@@ -48,6 +48,12 @@ A next generation E-Commerce theme built with SvelteKit.
 
 > But this was a good refresher on the API
 
+## Medusa
+
+> A headless-first shopify alternative built with Javascript
+> [More info](https://github.com/medusajs/medusa)
+
+
 ## TailwindCSS v3.0
 
 > I used v2 in previous projects
