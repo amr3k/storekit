@@ -66,7 +66,7 @@
 
 <script lang="ts">
 	import Pagination from '$lib/Components/Category/Pagination.svelte';
-	import ProductCard from '$lib/Components/Product/productCard.svelte';
+	import ProductCard from '$lib/Components/Category/productCard.svelte';
 	import { getCategoryAncestors } from '$lib/Functions/getCategoryAncestors';
 	import type { categoryPreferencesType } from '$lib/Types/ui.types';
 	export let category: Category;
