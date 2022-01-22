@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
-	let animateSVG: boolean = false;
-	let checkMark: boolean = false;
-	let btnWidth: string = '80px';
-	let animationDuration: number = 4000;
+	let animateSVG = false;
+	let checkMark = false;
+	let btnWidth = '80px';
+	let animationDuration = 4000;
 	const addToCart = () => {
 		if (animateSVG === true) {
 			// Prevent duplicate clicks
