@@ -38,7 +38,7 @@
 	<div class="flex justify-evenly px-10 pb-5 h-full">
 		<div class="w-full px-10">
 			<!-- Left side: Product image slider -->
-			<img class="object-cover w-full" src={product.images[0].src} alt="{product.images[0].alt}" />
+			<img class="object-cover w-full" src={product.images[0].src} alt={product.images[0].alt} />
 		</div>
 		<div class="flex flex-col items-start w-full px-4">
 			<!-- Right side: Product info -->
