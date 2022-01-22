@@ -65,10 +65,13 @@
 </script>
 
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+	import { clickOutside } from '$lib/Actions/clickOutside';
 	import Pagination from '$lib/Components/Category/Pagination.svelte';
 	import ProductCard from '$lib/Components/Category/productCard.svelte';
 	import { getCategoryAncestors } from '$lib/Functions/getCategoryAncestors';
 	import type { categoryPreferencesType } from '$lib/Types/ui.types';
+	import QuickView from '$lib/Components/Category/QuickView.svelte';
 	export let category: Category;
 	let breadCrumbs: Category[] = getCategoryAncestors(category).reverse();
 
@@ -91,11 +94,40 @@
 			products = await res.json();
 		}
 	};
+
+	// let focusProduct: Product;
+	// let isQuickViewOpen = false;
+	let focusProduct: Product = products[0];
+	let isQuickViewOpen = true;
+	const openQuickView = (customEvent: CustomEvent) => {
+		focusProduct = customEvent.detail;
+		isQuickViewOpen = true;
+	};
+	const escapeClick = (event: KeyboardEvent) => {
+		if (event.key === 'Escape' || event.key === 'Esc') {
+			isQuickViewOpen = false;
+		}
+	};
 </script>
+
+<svelte:window on:keydown={escapeClick} />
 
 <svelte:head>
 	<title>Shop the best collection of {category.name}</title>
 </svelte:head>
+
+{#if isQuickViewOpen}
+	<div
+		transition:fade={{ duration: 100 }}
+		class="fixed inset-0 pt-20 z-50 w-full min-h-screen flex justify-center items-center overflow-y-auto"
+	>
+		<div
+			class="fixed inset-0 h-screen z-0 w-full bg-black/50"
+			on:click={() => (isQuickViewOpen = false)}
+		/>
+		<QuickView product={focusProduct} on:close={() => (isQuickViewOpen = false)} />
+	</div>
+{/if}
 
 <h1 class="text-4xl font-bold text-center animate-shine-text">{category.name}</h1>
 <div class="flex items-center justify-around pb-6 px-4">
@@ -108,6 +140,7 @@
 		{/each}
 	</div>
 	<select bind:value={$categoryPreferencesStore.productsPerPage} class="select select-bordered">
+		<!-- Items per page -->
 		<option value="12">12</option>
 		<option value="24">24</option>
 		<option value="48">48</option>
@@ -118,7 +151,7 @@
 	class="px-4 grid gap-4 justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
 >
 	{#each products as product}
-		<ProductCard {product} />
+		<ProductCard {product} on:openQuickView={openQuickView} />
 	{/each}
 </div>
 
