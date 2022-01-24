@@ -1,17 +1,15 @@
 import { WOO_AUTH_HEADER } from '$lib/config';
-import { toJSON } from '$lib/Functions/API';
-import type { Request } from '@sveltejs/kit';
 
-export async function post(req: Request) {
+export async function post({ request }) {
 	try {
 		/**
 		 * Woocommerce API reference: https://woocommerce.github.io/woocommerce-rest-api-docs/
 		 * Get product categories
 		 **/
-		const jsonBody = toJSON(req.rawBody);
-		const categories: number[] = jsonBody.categories;
-		const pageID: number = jsonBody.pageNumber;
-		const perPage: number = jsonBody.perPage;
+		const _body = await request.json();
+		const categories: number[] = _body.categories;
+		const pageID: number = _body.pageNumber;
+		const perPage: number = _body.perPage;
 		const _url =
 			import.meta.env.VITE_WOO_ENDPOINT +
 			`/products?category=${categories.join(',')}&per_page=${perPage}&page=${pageID}`;

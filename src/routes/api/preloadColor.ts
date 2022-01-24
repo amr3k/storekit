@@ -1,6 +1,4 @@
-import type { Request } from '@sveltejs/kit';
-
-export const get = async (req: Request) => {
+export const get = async ({ request }) => {
 	/**
 	 * This function fetches color hex code by name.
 	 * It uses API provided by ColourLovers (https://www.colourlovers.com/api/).
@@ -9,7 +7,8 @@ export const get = async (req: Request) => {
 	 * @returns {string} - hex representation of the color
 	 */
 	try {
-		const colorName = decodeURI(req.url.searchParams.get('colorName')).replace(' ', '+');
+		// TODO - fix this; use params instead of request
+		const colorName = decodeURI(request.url.searchParams.get('colorName')).replace(' ', '+');
 
 		const res: Response = await fetch(
 			`http://www.colourlovers.com/api/colors/?format=json&keywords=${colorName}`

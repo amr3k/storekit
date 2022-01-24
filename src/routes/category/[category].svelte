@@ -66,7 +66,6 @@
 
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import { clickOutside } from '$lib/Actions/clickOutside';
 	import Pagination from '$lib/Components/Category/Pagination.svelte';
 	import ProductCard from '$lib/Components/Category/productCard.svelte';
 	import { getCategoryAncestors } from '$lib/Functions/getCategoryAncestors';
