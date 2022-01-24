@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/Actions/clickOutside';
 	import type { Product } from '$lib/Types/Data/product.types';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	export let cart: Product[];
 	let totalPrice = cart.reduce((acc, cur) => acc + parseFloat(cur.price) * cur.stock_quantity, 0);
@@ -11,7 +11,8 @@
 
 <div
 	use:clickOutside
-	transition:fly={{ duration: 300, y: -20 }}
+	in:fly={{ duration: 300, y: -20 }}
+	out:fade={{ duration: 200 }}
 	class="cart-dropdown absolute z-50 right-auto top-16 w-48 bg-base-100 border border-base-200 rounded-xl overflow-hidden shadow-2xl flex flex-col p-0"
 >
 	<div class="cart-header flex justify-center">
