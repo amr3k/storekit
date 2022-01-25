@@ -65,7 +65,7 @@ export type Product = {
 	total_sales: number;
 	virtual: boolean;
 	downloadable: boolean;
-	downloads: any[];
+	downloads: (number | string)[];
 	download_limit: number;
 	download_expiry: number;
 	external_url: string;
@@ -97,7 +97,7 @@ export type Product = {
 	parent_id: number;
 	purchase_note: string;
 	categories: ShortCategory[];
-	tags: any[];
+	tags: (string | number)[];
 	images: ProductImage[];
 	attributes: ProductAttribute[];
 	default_attributes: ProductDefaultAttribute[];

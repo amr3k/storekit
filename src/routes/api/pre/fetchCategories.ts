@@ -1,7 +1,8 @@
 import { WOO_AUTH_HEADER } from '$lib/config';
 import type { Category } from '$lib/Types/Data/category.types';
+import type { RequestHandler } from '@sveltejs/kit';
 
-export const get = async () => {
+export const get: RequestHandler = async () => {
 	try {
 		/**
 		 * Woocommerce API reference: https://woocommerce.github.io/woocommerce-rest-api-docs/

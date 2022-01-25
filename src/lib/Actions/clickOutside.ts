@@ -1,8 +1,7 @@
 import { closeAll as closeAllMenus } from '$lib/Stores/UI/headerMenus';
 
-export function clickOutside(node?: HTMLElement) {
-	const handleClick = (event?: MouseEvent) => closeAllMenus();
-
+export function clickOutside(): { destroy?: () => void } {
+	const handleClick = () => closeAllMenus();
 	document.addEventListener('click', handleClick, true);
 
 	return {
