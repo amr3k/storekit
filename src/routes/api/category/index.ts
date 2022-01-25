@@ -1,6 +1,7 @@
 import { WOO_AUTH_HEADER } from '$lib/config';
+import type { RequestHandler } from '@sveltejs/kit';
 
-export async function post({ request }) {
+export const post: RequestHandler = async ({ request }) => {
 	try {
 		/**
 		 * Woocommerce API reference: https://woocommerce.github.io/woocommerce-rest-api-docs/
@@ -39,4 +40,4 @@ export async function post({ request }) {
 			body: e
 		};
 	}
-}
+};

@@ -14,7 +14,7 @@
 	});
 	let productInWishlist = false;
 	// This variable indicates a user has clicked Add to cart while the product has multiple sizes
-	let showAvailableSizes = false;
+	// let showAvailableSizes = false;
 
 	const dispatch = createEventDispatcher();
 	const openQuickView = () => {

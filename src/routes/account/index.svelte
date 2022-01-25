@@ -1,5 +1,7 @@
-<script context="module">
-	export const load = async ({ params, fetch, session, stuff }) => {
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
+
+	export const load: Load = async ({ params, fetch, session, stuff }) => {
 		// The load function receives an object containing five fields:
 		// url, params, fetch, session and stuff
 		fetch('https://jsonplaceholder.typicode.com/users');

@@ -1,8 +1,9 @@
 <script context="module" lang="ts">
 	import { categoriesStore } from '$lib/Stores/Data/categories';
 	import { get as getStoreData } from 'svelte/store';
+	import type { Load } from '@sveltejs/kit';
 
-	export const load = async ({ url, params, fetch, session, stuff }) => {
+	export const load: Load = async ({ url, params, fetch, session, stuff }) => {
 		if (!getStoreData(categoriesStore)) {
 			/**
 			 * Check if the categories store is empty.

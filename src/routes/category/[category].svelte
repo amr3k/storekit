@@ -1,13 +1,14 @@
 <script context="module" lang="ts">
 	import { categoriesStore } from '$lib/Stores/Data/categories';
 	import categoryPreferencesStore from '$lib/Stores/UI/category';
+	import type { Load } from '@sveltejs/kit';
 
 	import type { Category } from '$lib/Types/Data/category.types';
-	import { sortBy } from '$lib/Types/Data/category.types';
+	// import { sortBy } from '$lib/Types/Data/category.types';
 	import type { Product } from '$lib/Types/Data/product.types';
 	import { get as getStoreValue } from 'svelte/store';
 
-	export async function load({ url, params, fetch }) {
+	export const load: Load = async ({ url, params, fetch }) => {
 		// Initialize empty array of category IDs
 		let matchCategory: Category;
 
@@ -61,7 +62,7 @@
 				status: 404
 			};
 		}
-	}
+	};
 </script>
 
 <script lang="ts">
