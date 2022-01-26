@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 export const get: RequestHandler = async ({ params }) => {
 	const productID = params.id;
-	const _url = import.meta.env.VITE_WOO_ENDPOINT + `/products?${productID}/variations`;
+	const _url = process.env.WOO_ENDPOINT + `/products?${productID}/variations`;
 	const res: Response = await fetch(_url, {
 		method: 'GET',
 		headers: {

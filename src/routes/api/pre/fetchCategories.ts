@@ -9,7 +9,7 @@ export const get: RequestHandler = async () => {
 		 * Get product categories
 		 */
 		const res: Response = await fetch(
-			`${import.meta.env.VITE_WOO_ENDPOINT}/products/categories?per_page=100&hide_empty=true`,
+			`${process.env.WOO_ENDPOINT}/products/categories?per_page=100&hide_empty=true`,
 			{
 				headers: {
 					Accept: 'application/json',
