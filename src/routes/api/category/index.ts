@@ -12,7 +12,7 @@ export const post: RequestHandler = async ({ request }) => {
 		const pageID: number = _body.pageNumber;
 		const perPage: number = _body.perPage;
 		const _url =
-			import.meta.env.VITE_WOO_ENDPOINT +
+			process.env.WOO_ENDPOINT +
 			`/products?category=${categories.join(',')}&per_page=${perPage}&page=${pageID}`;
 		const res: Response = await fetch(_url, {
 			method: 'GET',
