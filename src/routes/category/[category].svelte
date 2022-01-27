@@ -98,9 +98,8 @@
 	};
 
 	// let focusProduct: Product;
-	// let isQuickViewOpen = false;
+	let isQuickViewOpen = false;
 	let focusProduct: Product = products[0];
-	let isQuickViewOpen = true;
 	const openQuickView = (customEvent: CustomEvent) => {
 		focusProduct = customEvent.detail;
 		isQuickViewOpen = true;

@@ -353,17 +353,31 @@
 			</div>
 		</div>
 	</div>
-	<div class="nav-wrp left-0 -translate-x-full">
-		<button class="previous-product" on:click={() => handleProductNavigation('previous')}>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+	<div class="nav-wrp ltr:left-0 rtl:right-0 ltr:-translate-x-full rtl:translate-x-full">
+		<button
+			class="group ltr:rounded-l-full rtl:rounded-r-full ltr:translate-x-1/2 rtl:-translate-x-1/2"
+			on:click={() => handleProductNavigation('previous')}
+		>
+			<svg
+				class="rtl:rotate-180 ltr:group-active:-translate-x-1 rtl:group-active:translate-x-1"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+			>
 				<path fill="none" d="M0 0h24v24H0z" />
 				<path d="m10.8 12 5 5-1.4 1.4L8 12l6.4-6.4 1.4 1.5z" />
 			</svg>
 		</button>
 	</div>
-	<div class="nav-wrp right-0 translate-x-full">
-		<button class="next-product" on:click={() => handleProductNavigation('next')}>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+	<div class="nav-wrp ltr:right-0 rtl:left-0 ltr:translate-x-full rtl:-translate-x-full">
+		<button
+			class="group ltr:rounded-r-full rtl:rounded-l-full ltr:-translate-x-1/2 rtl:translate-x-1/2"
+			on:click={() => handleProductNavigation('next')}
+		>
+			<svg
+				class="rtl:rotate-180 ltr:group-active:translate-x-1 rtl:group-active:-translate-x-1"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+			>
 				<path fill="none" d="M0 0h24v24H0z" />
 				<path d="m13.2 12-5-5 1.4-1.4L16 12l-6.4 6.4L8.2 17z" />
 			</svg>
@@ -376,28 +390,22 @@
 		@apply absolute top-0 flex items-center h-full;
 	}
 	.nav-wrp > button {
-		@apply z-50 bg-white p-4 rounded-full cursor-pointer duration-200 ease-in-out;
+		@apply z-50 bg-white p-2 cursor-pointer duration-200 ease-in-out;
+	}
+	.nav-wrp > button:focus {
+		@apply outline-none;
+	}
+	.nav-wrp > button:focus > svg {
+		@apply fill-primary-focus;
 	}
 	.nav-wrp > button > svg {
 		@apply w-8 h-8;
-	}
-	button.previous-product {
-		border-radius: 50% 0% 0% 50% / 50% 0% 0% 50%;
-	}
-	button.next-product {
-		border-radius: 0% 50% 50% 0% / 0% 50% 50% 0%;
 	}
 	button:hover > svg {
 		@apply scale-150 duration-200 ease-linear;
 	}
 	button:active > svg {
-		@apply fill-primary-focus;
-	}
-	button.previous-product:active > svg {
-		@apply -translate-x-1;
-	}
-	button.next-product:active > svg {
-		@apply translate-x-1;
+		@apply fill-primary;
 	}
 	.close-btn > svg {
 		@apply w-8 h-8 inset-0 duration-100;
