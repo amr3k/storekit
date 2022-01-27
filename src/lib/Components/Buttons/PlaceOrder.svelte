@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
+	export let btnTitle: string;
 	let animateSVG = false;
 	let checkMark = false;
 	let btnWidth = '80px';
@@ -21,10 +22,10 @@
 		// Send request to add the product to cart
 		// If it was successful, show the animation followed by the success message
 		// Else, show the animation followed by the error message
-		dispatch('addToCart');
 		setTimeout(() => {
 			animateSVG = false;
 			checkMark = true;
+			dispatch('addToCart');
 			setTimeout(() => {
 				checkMark = false;
 			}, animationDuration / 2);
@@ -60,7 +61,7 @@
 				d="M16.2 2.5c.5 0 1 .5 1 1v2h3c.5 0 1 .5 1 1v8c0 .6-.5 1-1 1h-12a1 1 0 0 1-1-1v-8c0-.5.4-1 1-1h3v-2c0-.5.4-1 1-1zm-6 5h-1v6h1Zm6 0h-4v6h4zm3 0h-1v6h1zm-4-3h-2v1h2z"
 			/>
 		</svg>
-		<div class="duration-500 {checkMark ? 'scale-0 opacity-0' : ''}">Quickly add to cart</div>
+		<div class="duration-500 {checkMark ? 'scale-0 opacity-0' : ''}">{btnTitle}</div>
 		<div class="absolute duration-500 {checkMark ? 'scale-1' : 'scale-0 opacity-0'}">
 			<svg
 				class="w-4 h-4 inline-block fill-current"

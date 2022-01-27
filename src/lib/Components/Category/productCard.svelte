@@ -14,11 +14,21 @@
 	});
 	let productInWishlist = false;
 	// This variable indicates a user has clicked Add to cart while the product has multiple sizes
-	// let showAvailableSizes = false;
+	let showAvailableSizes = false;
 
 	const dispatch = createEventDispatcher();
 	const openQuickView = () => {
 		dispatch('openQuickView', product);
+	};
+	const addToCart = (size?: string) => {
+		if (typeof size === 'string') {
+			console.log('Adding to cart');
+			showAvailableSizes = false;
+			return;
+		}
+		if (productSizes.length > 1) {
+			showAvailableSizes = true;
+		}
 	};
 </script>
 
@@ -48,9 +58,13 @@
 		</a>
 		{#if isProductAvailable}
 			<div
-				class="absolute bottom-20 w-full opacity-0 group-hover:opacity-100 flex flex-col items-center justify-end duration-200 ease-linear product-blurred-menu"
+				class="product-blurred-menu absolute bottom-20 w-full opacity-0 group-hover:opacity-100 flex flex-col items-center justify-end duration-200 ease-linear"
 			>
-				<button class="hover:text-secondary hover:fill-secondary" on:click={openQuickView}>
+				<button
+					class:main-bottons-838={showAvailableSizes}
+					class="hover:text-secondary hover:fill-secondary"
+					on:click={openQuickView}
+				>
 					<h2 class="text-xl font-extrabold">Quick view</h2>
 					<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 						><path fill="none" d="M0 0h24v24H0z" /><path
@@ -58,8 +72,11 @@
 						/></svg
 					>
 				</button>
-				<!-- TODO Insert add to cart endpoint -->
-				<a href="/product/{product.slug}" class="hover:text-secondary hover:fill-secondary">
+				<button
+					class:main-bottons-838={showAvailableSizes}
+					on:click={addToCart}
+					class="hover:text-secondary hover:fill-secondary"
+				>
 					<h2 class="text-xl font-extrabold">Add to cart</h2>
 					<svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 						<path fill="none" d="M0 0h24v24H0V0z" />
@@ -67,7 +84,44 @@
 							d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8.9-5h7.5a2 2 0 0 0 1.7-1l3.9-7-1.8-1-3.8 7h-7L4.2 2H1v2h2l3.6 7.6L5.2 14A2 2 0 0 0 7 17h12v-2H7l1.1-2z"
 						/>
 					</svg>
-				</a>
+				</button>
+				<ul
+					class="p-4 flex justify-center items-center rounded-lg backdrop-blur-xl bg-white/70 shadow-xl duration-100 ease-in-out {showAvailableSizes
+						? 'opacity-100 -translate-y-full'
+						: 'opacity-0'}"
+				>
+					{#each productSizes as _pSize}
+						<li
+							class="w-20 flex justify-between items-center p-0 m-0 rounded text-gray-800/70 hover:text-inherit hover:bg-white"
+						>
+							<button
+								on:click={() => addToCart(_pSize)}
+								class="text-xl font-bold text-center w-full py-2 px-0">{_pSize}</button
+							>
+						</li>
+					{/each}
+				</ul>
+				<div
+					class="flex justify-center items-center duration-100 ease-in-out {showAvailableSizes
+						? 'opacity-100 -translate-y-14'
+						: 'opacity-0'}"
+				>
+					<!-- Close button -->
+					<!-- This button hides sizes and returns main buttons to view -->
+					<button
+						class="p-2 backdrop-blur-xl bg-white/70 hover:bg-white shadow-xl rounded-full"
+						on:click={() => (showAvailableSizes = false)}
+					>
+						<svg
+							class="fill-current w-6 h-6 inset-0 duration-100"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+						>
+							<path fill="none" d="M0 0h24v24H0z" />
+							<path d="m6 7 2 3-1 1-5-5 5-5 1 1-2 3h7a8 8 0 1 1 0 16H4v-2h9a6 6 0 1 0 0-12H6z" />
+						</svg>
+					</button>
+				</div>
 			</div>
 		{/if}
 		{#if product.on_sale && isProductAvailable}
@@ -164,9 +218,12 @@
 {/await}
 
 <style lang="postcss">
-	.product-blurred-menu > button,
-	.product-blurred-menu > a {
-		@apply w-3/4 flex justify-between items-center rounded-lg p-4 backdrop-blur-xl bg-white/70 shadow-xl mb-2;
+	.product-blurred-menu > button {
+		@apply w-3/4 flex justify-between items-center rounded-lg p-4 backdrop-blur-xl bg-white/70 shadow-xl mb-2 duration-100 ease-in-out;
+	}
+	.main-bottons-838 {
+		/* This class makes the two buttons `Quick view` and `Add to cart` move up slowly if the product has multiple sizes */
+		@apply -translate-y-20 opacity-40 text-primary-content pointer-events-none shadow-none backdrop-blur-none;
 	}
 	.wishlist-button svg {
 		@apply w-7 h-7;
