@@ -135,7 +135,7 @@
 		{/if}
 		{#if !isProductAvailable}
 			<!-- Show Out of stock badge -->
-			<a href="/product/{product.slug}">
+			<a sveltekit:prefetch href="/product/{product.slug}">
 				<div class="absolute inset-0 w-full h-full flex items-center justify-center select-none">
 					<div class="w-full h-20 flex items-center justify-center backdrop-blur-xl bg-white/60">
 						<h1
@@ -151,7 +151,7 @@
 		<div class="p-2 flex justify-between">
 			<!-- Product title -->
 			<h3 class:text-gray-500={!isProductAvailable} class="font-bold text-md truncate w-full">
-				<a href="/product/{product.slug}" title={product.name}>
+				<a sveltekit:prefetch href="/product/{product.slug}" title={product.name}>
 					{product.name}
 				</a>
 			</h3>

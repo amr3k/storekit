@@ -90,7 +90,7 @@
 			<div class="flex gap-4 my-4 justify-evenly items-center">
 				<!-- Call to action -->
 				<PlaceOrder on:addToCart={close} btnTitle="Buy now" />
-				<a class="w-full" href="/product/{product.slug}">View details</a>
+				<a sveltekit:prefetch class="w-full" href="/product/{product.slug}">View details</a>
 			</div>
 			<div>
 				<!-- Category information -->
@@ -98,7 +98,7 @@
 				{#each product.categories as cat}
 					<span
 						class="badge hover:bg-secondary-focus hover:border-secondary-focus duration-100 mx-1"
-						><a href="/category/{cat.slug}">{@html cat.name}</a></span
+						><a sveltekit:prefetch href="/category/{cat.slug}">{@html cat.name}</a></span
 					>
 				{/each}
 			</div>
@@ -107,7 +107,7 @@
 				<!-- Facebook -->
 				<a
 					href="https://facebook.com/sharer/sharer.php?u={productURL}&quote={shareMsg}"
-					rel="noopener"
+					rel="external"
 					target="_blank"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
@@ -150,7 +150,7 @@
 				<!-- Twitter -->
 				<a
 					href="https://twitter.com/intent/tweet/?text={shareMsg}&url={productURL}"
-					rel="noopener"
+					rel="external"
 					target="_blank"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"
@@ -196,7 +196,7 @@
 				<a
 					href="https://pinterest.com/pin/create/button/?url={productURL}&media={product.images[0]
 						.src}&description={shareMsg}"
-					rel="noopener"
+					rel="external"
 					target="_blank"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"
@@ -242,7 +242,7 @@
 					></a
 				>
 				<!-- Whatsapp -->
-				<a href="whatsapp://send?text={shareMsg} {productURL}" rel="noopener" target="_blank">
+				<a href="whatsapp://send?text={shareMsg} {productURL}" rel="external" target="_blank">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"
 						><radialGradient id="a" cx="32.5" cy="32.5" r="30.5" gradientUnits="userSpaceOnUse"
 							><stop offset="0" stop-color="#eed7a2" /><stop
@@ -305,7 +305,7 @@
 				<!-- Telegram -->
 				<a
 					href="https://telegram.me/share/url?text={shareMsg}&url={productURL}"
-					rel="noopener"
+					rel="external"
 					target="_blank"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">

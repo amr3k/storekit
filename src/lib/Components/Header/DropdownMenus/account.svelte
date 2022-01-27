@@ -25,7 +25,7 @@
 			</div>
 			<ul class="bg-base-100 p-2">
 				<li class="account-li">
-					<a on:click={closeAllMenus} href="/account">
+					<a sveltekit:prefetch on:click={closeAllMenus} href="/account">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 							><path fill="none" d="M0 0h24v24H0z" /><path
 								d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
@@ -35,7 +35,7 @@
 					</a>
 				</li>
 				<li class="wishlist-li">
-					<a on:click={closeAllMenus} href="/wishlist">
+					<a sveltekit:prefetch on:click={closeAllMenus} href="/wishlist">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 							><path fill="none" d="M0 0h24v24H0z" /><path
 								d="M20.24 4.76a6 6 0 0 1 .24 8.23L12 21.5 3.52 13A6 6 0 0 1 12 4.53a6 6 0 0 1 8.24.23zM5.17 6.17a4 4 0 0 0-.19 5.45L12 18.65l7.02-7.03a4 4 0 0 0-5.65-5.64l-4.2 4.2-1.41-1.4 2.82-2.83-.08-.07a4 4 0 0 0-5.33.3z"
@@ -45,7 +45,7 @@
 					</a>
 				</li>
 				<li class="faq-li">
-					<a on:click={closeAllMenus} href="/faq">
+					<a sveltekit:prefetch on:click={closeAllMenus} href="/faq">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path fill="none" d="M0 0h24v24H0z" />
 							<path
@@ -56,7 +56,7 @@
 					</a>
 				</li>
 				<li class="logout-li">
-					<a on:click={closeAllMenus} href="/logout">
+					<a sveltekit:prefetch on:click={closeAllMenus} href="/logout">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 							><path fill="none" d="M0 0h24v24H0z" /><path
 								d="m6.26 3.8 1.15 1.65a8 8 0 1 0 9.18 0l1.15-1.64A9.99 9.99 0 0 1 22 12a10 10 0 1 1-20 0 9.99 9.99 0 0 1 4.26-8.2zM11 12V2h2v10h-2z"
@@ -68,13 +68,13 @@
 			</ul>
 		{:else}
 			<div class="p-2 my-4">
-				<a on:click={closeAllMenus} href="/account" class="btn btn-primary">Login</a>
+				<a sveltekit:prefetch on:click={closeAllMenus} href="/account" class="btn btn-primary">Login</a>
 				<div class="divider">OR</div>
-				<a on:click={closeAllMenus} href="/account" class="btn btn-secondary">Sign up</a>
+				<a sveltekit:prefetch on:click={closeAllMenus} href="/account" class="btn btn-secondary">Sign up</a>
 			</div>
 			<ul class="bg-base-100 p-2">
 				<li class="wishlist-li">
-					<a on:click={closeAllMenus} href="/wishlist">
+					<a sveltekit:prefetch on:click={closeAllMenus} href="/wishlist">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 							><path fill="none" d="M0 0h24v24H0z" /><path
 								d="M20.24 4.76a6 6 0 0 1 .24 8.23L12 21.5 3.52 13A6 6 0 0 1 12 4.53a6 6 0 0 1 8.24.23zM5.17 6.17a4 4 0 0 0-.19 5.45L12 18.65l7.02-7.03a4 4 0 0 0-5.65-5.64l-4.2 4.2-1.41-1.4 2.82-2.83-.08-.07a4 4 0 0 0-5.33.3z"
@@ -84,7 +84,7 @@
 					</a>
 				</li>
 				<li class="faq-li">
-					<a on:click={closeAllMenus} href="/faq">
+					<a sveltekit:prefetch on:click={closeAllMenus} href="/faq">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path fill="none" d="M0 0h24v24H0z" />
 							<path
