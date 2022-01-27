@@ -83,7 +83,9 @@
 			<div class="my-2">
 				<!-- Product price as html -->
 				<!-- {@html product.price_html} -->
-				<p class="font-bold text-accent">${Math.round(parseInt(product.price))}.00</p>
+				<p class="font-bold text-accent">
+					${parseFloat(product.price).toFixed(2)}
+				</p>
 			</div>
 			<div class="flex gap-4 my-4 justify-evenly items-center">
 				<!-- Call to action -->
