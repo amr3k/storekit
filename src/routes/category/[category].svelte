@@ -127,14 +127,14 @@
 	</div>
 {/if}
 
-<h1 class="text-4xl font-bold text-center animate-shine-text">{category.name}</h1>
+<h1 class="text-4xl font-bold text-center animate-gradient-text">{category.name}</h1>
 <div class="flex items-center justify-around pb-6 px-4">
 	<div class="flex px-2 breadcrumbs w-full">
 		<!-- Breadcrumbs -->
-		<a href="/">Home</a>
+		<a sveltekit:prefetch href="/">Home</a>
 		{#each breadCrumbs as category}
 			<span class="mx-1 text-gray-600">&#9679</span>
-			<a href="/category/{category.slug}">{category.name}</a>
+			<a sveltekit:prefetch href="/category/{category.slug}">{category.name}</a>
 		{/each}
 	</div>
 	<select bind:value={$categoryPreferencesStore.productsPerPage} class="select select-bordered">

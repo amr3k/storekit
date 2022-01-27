@@ -94,7 +94,7 @@
 		background-position: right;
 		animation: shine 3s linear infinite;
 	}
-	.animate-shine-text {
+	.animate-gradient-text {
 		color: white;
 		background: linear-gradient(
 			45deg,
