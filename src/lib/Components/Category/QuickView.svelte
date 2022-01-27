@@ -374,19 +374,28 @@
 		@apply absolute top-0 flex items-center h-full;
 	}
 	.nav-wrp > button {
-		@apply z-50 bg-white p-4 rounded-full shadow-sm cursor-pointer;
+		@apply z-50 bg-white p-4 rounded-full cursor-pointer duration-200 ease-in-out;
 	}
 	.nav-wrp > button > svg {
 		@apply w-8 h-8;
 	}
 	button.previous-product {
-		border-radius: 75% 25% 25% 75% / 50% 25% 25% 50%;
+		border-radius: 50% 0% 0% 50% / 50% 0% 0% 50%;
 	}
 	button.next-product {
-		border-radius: 25% 75% 75% 25% / 25% 50% 50% 25%;
+		border-radius: 0% 50% 50% 0% / 0% 50% 50% 0%;
 	}
 	button:hover > svg {
 		@apply scale-150 duration-200 ease-linear;
+	}
+	button:active > svg {
+		@apply fill-primary-focus;
+	}
+	button.previous-product:active > svg {
+		@apply -translate-x-1;
+	}
+	button.next-product:active > svg {
+		@apply translate-x-1;
 	}
 	.close-btn > svg {
 		@apply w-8 h-8 inset-0 duration-100;
