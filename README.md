@@ -22,6 +22,9 @@ A next generation E-Commerce theme built with SvelteKit.
 
 ### i18n
 
+- SVG follows HTML direction.
+- **Fancy** border radius follow HTML direction as well.
+
 - Useful libraries:
   - [Typesafe i18n](https://github.com/ivanhofer/typesafe-i18n) (⭐+720)
     > An opinionated, fully type-safe, lightweight localization library for TypeScript and JavaScript projects with no external dependencies.
@@ -78,6 +81,72 @@ To disable this, you can modify `vercel.json` as follows:
 	}
 }
 ```
+
+# UI Components
+
+## [DaisyUI](https://daisyui.com)
+
+> [Source](https://github.com/saadeghi/daisyui) ⭐+7.3K
+
+- ✅ Built with TailwindCSS.
+- ✅ Easy to use and customize.
+- ✅ Regular updates
+
+## [SvelteMaterialUI](https://sveltematerialui.com)
+
+> [Source](https://github.com/hperrin/svelte-material-ui) ⭐+2.2K
+
+- ✅ Material design.
+- ✅ Regular updates
+
+## [SPaper](https://oli8.github.io/spaper/)
+
+> [Source](https://github.com/Oli8/spaper) ⭐+70
+
+- ✅ Great for prototyping (paper like).
+
+## [Attractions](https://illright.github.io/attractions)
+
+> [Source](https://github.com/illright/attractions) ⭐+500
+
+- ✅ Gorgeous design.
+- ✅ Regular updates.
+
+## [Carbon](https://carbon-components-svelte.onrender.com)
+
+> [Source](https://github.com/carbon-design-system/carbon-components-svelte) ⭐+1.3K
+
+- ✅ Most feature complete, has most components I may need.
+- ✅ Regular updates.
+- ❎ Ugly design for my taste.
+
+## [SvelteMUI](https://svelte-mui.vercel.app)
+
+> [Source](https://github.com/vikignt/svelte-mui) ⭐+260
+
+- ✅ Material design.
+- ✅ Regular updates.
+- ⚠ Still work in progress.
+
+## [Smelte](https://smeltejs.com)
+
+> [Source](https://smeltejs.com) ⭐+1.2K
+
+- ⚠ Built with Tailwind 2.
+- ⚠ A bit outdated.
+
+## [Kahi-UI](https://kahi-ui.nbn.dev)
+
+> [Source](https://kahi-ui.nbn.dev) ⭐+130
+
+- ✅ Typescript + plain CSS.
+
+## Other
+
+- Svelte materialfy (deprecated)
+- Svelteit (deprecated)
+
+## Attractions
 
 # Resources
 

@@ -66,12 +66,12 @@
 </script>
 
 <script lang="ts">
-	import { fade } from 'svelte/transition';
 	import Pagination from '$lib/Components/Category/Pagination.svelte';
 	import ProductCard from '$lib/Components/Category/productCard.svelte';
 	import { getCategoryAncestors } from '$lib/Functions/getCategoryAncestors';
 	import type { categoryPreferencesType } from '$lib/Types/ui.types';
 	import QuickView from '$lib/Components/Category/QuickView.svelte';
+	import { setContext } from 'svelte';
 	export let category: Category;
 	let breadCrumbs: Category[] = getCategoryAncestors(category).reverse();
 
@@ -80,6 +80,8 @@
 	$: totalPages = Math.ceil(category.count / parseInt($categoryPreferencesStore.productsPerPage));
 
 	export let products: Product[];
+
+	setContext('productsInPage', products);
 
 	const updateProducts = async () => {
 		const res: Response = await fetch('/api/category', {
@@ -117,10 +119,7 @@
 </svelte:head>
 
 {#if isQuickViewOpen}
-	<div
-		transition:fade={{ duration: 100 }}
-		class="fixed inset-0 pt-20 z-50 w-full min-h-screen flex justify-center items-center overflow-y-auto"
-	>
+	<div class="fixed w-screen h-screen inset-0 flex justify-center items-center z-50">
 		<div
 			class="fixed inset-0 h-screen z-0 w-full bg-black/50"
 			on:click={() => (isQuickViewOpen = false)}
@@ -148,7 +147,7 @@
 </div>
 
 <div
-	class="px-4 grid gap-4 justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+	class="px-4 grid gap-4 justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 overflow-y-auto"
 >
 	{#each products as product}
 		<ProductCard {product} on:openQuickView={openQuickView} />
