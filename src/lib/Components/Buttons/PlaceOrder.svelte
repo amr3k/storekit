@@ -13,7 +13,9 @@
 		}
 		animateSVG = true;
 		try {
-			const _btnWidth = document.querySelector('#quickly-add-to-cart-3826').offsetWidth;
+			// @svelte-ignore
+			const _mainBtn: HTMLButtonElement = document.querySelector('quickly-add-to-cart-3826');
+			const _btnWidth = _mainBtn.offsetWidth;
 			btnWidth = `${_btnWidth}px`;
 		} catch (e) {
 			btnWidth = `80px`;
@@ -36,8 +38,7 @@
 <div class="container relative w-full">
 	<button
 		on:click={addToCart}
-		id="quickly-add-to-cart-3826"
-		class="relative py-2 px-3 rounded whitespace-nowrap bg-accent hover:bg-accent-focus text-accent-content flex justify-center items-center shadow-md shadow-accent/50"
+		class="relative quickly-add-to-cart-3826 py-2 px-3 rounded whitespace-nowrap bg-accent hover:bg-accent-focus text-accent-content flex justify-center items-center shadow-md shadow-accent/50"
 		aria-label="Place order"
 	>
 		<!-- Here I'm putting variables inside style attribute to calculate the length, duration which animation should follow -->
