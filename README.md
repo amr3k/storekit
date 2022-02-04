@@ -51,6 +51,11 @@ A next generation E-Commerce theme built with SvelteKit.
 
 > But this was a good refresher on the API
 
+> Unfortunately it was not the right choice here. as Our website uses a 3rd party plugin for products, 
+> And they changed the way it works with images so now it fetches images from their Google Cloud not from our server!
+> This resulted in lots of CORS errors that I don't really care to fix anymore.
+> I'll explore other options.
+
 ## Medusa
 
 > A headless-first shopify alternative built with Javascript

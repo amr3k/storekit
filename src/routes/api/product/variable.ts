@@ -1,9 +1,9 @@
-import { WOO_AUTH_HEADER } from '$lib/config';
+import { WOO_AUTH_HEADER, WOO_ENDPOINT } from '$lib/config';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const get: RequestHandler = async ({ params }) => {
 	const productID = params.id;
-	const _url = process.env.WOO_ENDPOINT + `/products?${productID}/variations`;
+	const _url = WOO_ENDPOINT + `/products?${productID}/variations`;
 	const res: Response = await fetch(_url, {
 		method: 'GET',
 		headers: {

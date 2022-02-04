@@ -1,4 +1,4 @@
-import { WOO_AUTH_HEADER } from '$lib/config';
+import { WOO_AUTH_HEADER, WOO_ENDPOINT } from '$lib/config';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const post: RequestHandler = async ({ request }) => {
@@ -12,7 +12,7 @@ export const post: RequestHandler = async ({ request }) => {
 		const pageID: number = _body.pageNumber;
 		const perPage: number = _body.perPage;
 		const _url =
-			process.env.WOO_ENDPOINT +
+			WOO_ENDPOINT +
 			`/products?category=${categories.join(',')}&per_page=${perPage}&page=${pageID}`;
 		const res: Response = await fetch(_url, {
 			method: 'GET',
