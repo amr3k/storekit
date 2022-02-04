@@ -10,7 +10,7 @@ export const preloadImage = async (source: string): Promise<string> => {
 	const reader: FileReader = new FileReader();
 	return new Promise(function (resolve) {
 		reader.readAsDataURL(blob);
-		reader.onload = () => resolve(reader.result);
+		reader.onload = () => resolve(reader.result.toString());
 		reader.onerror = (error) => console.error('Error: ', error);
 	});
 };
