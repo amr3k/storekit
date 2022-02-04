@@ -68,9 +68,13 @@
 			</ul>
 		{:else}
 			<div class="p-2 my-4">
-				<a sveltekit:prefetch on:click={closeAllMenus} href="/account" class="btn btn-primary">Login</a>
+				<a sveltekit:prefetch on:click={closeAllMenus} href="/account" class="btn btn-primary"
+					>Login</a
+				>
 				<div class="divider">OR</div>
-				<a sveltekit:prefetch on:click={closeAllMenus} href="/account" class="btn btn-secondary">Sign up</a>
+				<a sveltekit:prefetch on:click={closeAllMenus} href="/account" class="btn btn-secondary"
+					>Sign up</a
+				>
 			</div>
 			<ul class="bg-base-100 p-2">
 				<li class="wishlist-li">
