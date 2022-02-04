@@ -19,7 +19,6 @@
 			btnWidth = `${_btnWidth}px`;
 		} catch (e) {
 			btnWidth = `80px`;
-			console.log(e);
 		}
 		// Send request to add the product to cart
 		// If it was successful, show the animation followed by the success message

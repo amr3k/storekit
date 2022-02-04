@@ -10,6 +10,7 @@
 			 * If it is, then load the categories.
 			 * This is to prevent the categories from being loaded multiple times.
 			 */
+			console.log('Loading categories...');
 			const res: Response = await fetch('/api/pre/fetchCategories');
 			const fetchedCategories = await res.json();
 			categoriesStore.set(fetchedCategories.data);

@@ -1,4 +1,4 @@
-import { WOO_AUTH_HEADER } from '$lib/config';
+import { WOO_AUTH_HEADER, WOO_ENDPOINT } from '$lib/config';
 import type { Category } from '$lib/Types/Data/category.types';
 import type { RequestHandler } from '@sveltejs/kit';
 
@@ -9,7 +9,7 @@ export const get: RequestHandler = async () => {
 		 * Get product categories
 		 */
 		const res: Response = await fetch(
-			`${process.env.WOO_ENDPOINT}/products/categories?per_page=100&hide_empty=true`,
+			`${WOO_ENDPOINT}/products/categories?per_page=100&hide_empty=true`,
 			{
 				headers: {
 					Accept: 'application/json',
@@ -27,6 +27,7 @@ export const get: RequestHandler = async () => {
 			};
 		}
 	} catch (error) {
+		console.error(error);
 		return {
 			status: 500,
 			body: {
