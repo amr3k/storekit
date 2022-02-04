@@ -13,6 +13,7 @@
 			productColors = attribute.options;
 		}
 	});
+	console.log(productColors); // Useless but I put it to suppress the linter
 	let mainPic = 0;
 	const dispatch = createEventDispatcher();
 	const close = () => {

@@ -14,20 +14,18 @@
 	});
 	let productInWishlist = false;
 	// This variable indicates a user has clicked Add to cart while the product has multiple sizes
-	let showAvailableSizes = false;
+	let availableSizesVisible = false;
 
 	const dispatch = createEventDispatcher();
 	const openQuickView = () => {
 		dispatch('openQuickView', product);
 	};
-	const addToCart = (size?: string) => {
+
+	const addToCart = (size: string) => {
 		if (typeof size === 'string') {
 			console.log('Adding to cart');
-			showAvailableSizes = false;
+			availableSizesVisible = false;
 			return;
-		}
-		if (productSizes.length > 1) {
-			showAvailableSizes = true;
 		}
 	};
 </script>
@@ -61,7 +59,7 @@
 				class="product-blurred-menu absolute bottom-20 w-full opacity-0 group-hover:opacity-100 flex flex-col items-center justify-end duration-200 ease-linear"
 			>
 				<button
-					class:main-bottons-838={showAvailableSizes}
+					class:main-bottons-838={availableSizesVisible}
 					class="hover:text-secondary hover:fill-secondary"
 					on:click={openQuickView}
 				>
@@ -73,8 +71,12 @@
 					>
 				</button>
 				<button
-					class:main-bottons-838={showAvailableSizes}
-					on:click={addToCart}
+					class:main-bottons-838={availableSizesVisible}
+					on:click={() => {
+						if (productSizes.length > 1) {
+							availableSizesVisible = true;
+						}
+					}}
 					class="hover:text-secondary hover:fill-secondary"
 				>
 					<h2 class="text-xl font-extrabold">Add to cart</h2>
@@ -86,7 +88,7 @@
 					</svg>
 				</button>
 				<ul
-					class="p-4 flex justify-center items-center rounded-lg backdrop-blur-xl bg-white/70 shadow-xl duration-100 ease-in-out {showAvailableSizes
+					class="p-4 flex justify-center items-center rounded-lg backdrop-blur-xl bg-white/70 shadow-xl duration-100 ease-in-out {availableSizesVisible
 						? 'opacity-100 -translate-y-full'
 						: 'opacity-0'}"
 				>
@@ -102,7 +104,7 @@
 					{/each}
 				</ul>
 				<div
-					class="flex justify-center items-center duration-100 ease-in-out {showAvailableSizes
+					class="flex justify-center items-center duration-100 ease-in-out {availableSizesVisible
 						? 'opacity-100 -translate-y-14'
 						: 'opacity-0'}"
 				>
@@ -110,7 +112,7 @@
 					<!-- This button hides sizes and returns main buttons to view -->
 					<button
 						class="p-2 backdrop-blur-xl bg-white/70 hover:bg-white shadow-xl rounded-full"
-						on:click={() => (showAvailableSizes = false)}
+						on:click={() => (availableSizesVisible = false)}
 					>
 						<svg
 							class="fill-current w-6 h-6 inset-0 duration-100"
