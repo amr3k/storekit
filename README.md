@@ -43,9 +43,9 @@ A next generation E-Commerce theme built with SvelteKit.
 
 ## GraphQL
 
-> Only the basics of client side
+> Using [gQuery](https://gquery.leveluptutorials.com)
 
-## WooCommerce REST API
+## ~~WooCommerce REST API~~ (Dropped for now in favor of Saleor)
 
 > I already had experience with building with Wordperss+Woocommerce
 
