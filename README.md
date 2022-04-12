@@ -1,5 +1,9 @@
 # StoreKit
 
+# Dev notes
+
+- Use [deferred transitions](https://svelte.dev/tutorial/deferred-transitions) for add to cart.
+
 A next generation E-Commerce theme built with SvelteKit.
 
 # What did I learn through this project?
